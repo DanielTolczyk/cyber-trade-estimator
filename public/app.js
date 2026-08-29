@@ -779,15 +779,15 @@ document.getElementById("btnCopySummary").addEventListener("click", () => {
     ? "https://danieltolczyk.github.io/cyber-trade-estimator/"
     : window.location.href.split("#")[0];
 
-  const summary = `[TRADE EVALUATION] ${title} (${totalHrs})\n\n` +
-    `If cybersecurity transitioned to an accredited skilled trade today, what tier would you place in on Day 1?\n\n` +
-    `• Standing: ${title}\n` +
-    `• Accredited Runtime: ${totalHrs}\n` +
-    `• Transition Pathway: ${trackLabel}\n` +
-    `• Key Protections: Statutory Prevailing Wage Floors, 2:1 Line-of-Sight Mentorship & Legal Right of Technical Refusal\n\n` +
-    `Discover your trade standing, Prior Learning credits, and milestone path:\n` +
-    `${appUrl}\n\n` +
-    `#Cybersecurity #InfoSec #Apprenticeship #WorkforceDevelopment #CyberTradeProject`;
+  const paragraphs = [
+    `[TRADE EVALUATION] ${title} (${totalHrs})`,
+    "If cybersecurity transitioned to an accredited skilled trade today, what tier would you place in on Day 1?",
+    `• Standing: ${title}\r\n• Accredited Runtime: ${totalHrs}\r\n• Transition Pathway: ${trackLabel}\r\n• Key Protections: Statutory Prevailing Wage Floors, 2:1 Line-of-Sight Mentorship & Legal Right of Technical Refusal`,
+    `Discover your trade standing, Prior Learning credits, and milestone path:\r\n${appUrl}`,
+    "#Cybersecurity #InfoSec #Apprenticeship #WorkforceDevelopment #CyberTradeProject"
+  ];
+
+  const summary = paragraphs.join("\r\n\r\n");
 
   navigator.clipboard.writeText(summary).then(() => {
     const btn = document.getElementById("btnCopySummary");
