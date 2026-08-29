@@ -1176,26 +1176,65 @@ body {
   border-color: #4b5563;
 }
 
-/* Governance Disclaimer */
-.governance-disclaimer-box {
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  border: 1px solid #334155;
-  background: #0f172a;
-  border-radius: 5px;
-  padding: 0.65rem;
-  line-height: 1.4;
+/* Consolidated Governance & Privacy Box */
+.governance-notice-box {
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin-top: 1rem;
 }
 
-.disclaimer-title {
-  display: block;
-  color: #f1f5f9;
-  margin-bottom: 0.2rem;
+.governance-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
 }
 
-.governance-disclaimer-box a {
+.governance-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   color: var(--accent-cyan);
-  text-decoration: underline;
+  background: #111e38;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.governance-header h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.governance-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-left: 0;
+}
+
+.governance-list li {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 0.9rem;
+}
+
+.governance-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+
+.governance-list li strong {
+  color: #cbd5e1;
 }
 
 /* Footer */
