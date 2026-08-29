@@ -1327,3 +1327,75 @@ body {
   gap: 0.4rem;
   cursor: pointer;
 }
+
+/* Mobile & Tablet Responsiveness Enhancements */
+@media (max-width: 960px) {
+  .milestone-banner {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 0 0 8px 8px;
+    border-top: none;
+    border-color: var(--accent-blue);
+    padding: 0.75rem 0.9rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  }
+
+  .milestone-banner h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .milestone-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .milestone-next {
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .dashboard-card {
+    position: static;
+  }
+
+  .milestone-stepper {
+    padding: 1rem 1.25rem 0.75rem 1.25rem;
+  }
+
+  .stepper-steps .step-lbl {
+    font-size: 0.62rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .milestone-banner {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .milestone-banner h2 {
+    font-size: 1.05rem;
+  }
+
+  .milestone-stepper {
+    padding: 0.85rem 0.75rem 0.65rem 0.75rem;
+  }
+
+  .stepper-steps .step-lbl {
+    font-size: 0.58rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+  }
+}
