@@ -1,0 +1,127 @@
+{
+  "version": "1.6.1",
+  "source_repository": "https://github.com/DanielTolczyk/the-cyber-trade-project",
+  "residency_floor_percentage": 50,
+  "max_pla_hours": 4000,
+  "annual_runtime_hours": 2000,
+  "wage_tiers": [
+    { "code": "TIER_1", "min_hours": 0, "max_hours": 1999, "title": "Entry Registered Apprentice (Tier 1)", "wage_percentage": "50% of Regional Journeyman Prevailing Benchmark" },
+    { "code": "TIER_2", "min_hours": 2000, "max_hours": 3999, "title": "Progressing Registered Apprentice (Tier 2)", "wage_percentage": "60% of Regional Journeyman Prevailing Benchmark" },
+    { "code": "TIER_3", "min_hours": 4000, "max_hours": 5999, "title": "Intermediate Registered Apprentice (Tier 3)", "wage_percentage": "70% of Regional Journeyman Prevailing Benchmark" },
+    { "code": "TIER_4", "min_hours": 6000, "max_hours": 7999, "title": "Advanced Registered Apprentice (Tier 4)", "wage_percentage": "80% of Regional Journeyman Prevailing Benchmark" },
+    { "code": "JOURNEYMAN", "min_hours": 8000, "max_hours": 11999, "title": "Licensed Journeyman", "wage_percentage": "100% of Regional Journeyman Prevailing Benchmark" },
+    { "code": "MASTER", "min_hours": 12000, "max_hours": null, "title": "Master Practitioner (Board Evaluation Eligible)", "wage_percentage": "135% to 150% of Regional Journeyman Prevailing Benchmark" }
+  ],
+  "journeyman_benchmark_certs": [
+    "CISSP", "CISM", "GSLC", "CISA", "CCSP"
+  ],
+  "degree_pla_credits": {
+    "Associate": 1000,
+    "Bachelor": 2000,
+    "Master": 3000
+  },
+  "practical_lab_cert_credits": {
+    "OSCP": 1000,
+    "PNPT": 1000,
+    "GCFA": 1000,
+    "GNFA": 1000,
+    "GREM": 1000,
+    "CCNA Cyber Ops": 500,
+    "GCIH": 500,
+    "Security+": 500,
+    "Network+": 500,
+    "CySA+": 500
+  },
+  "specialty_catalog": {
+    "SE-MED": {
+      "title": "Medical Device & Clinical Technology Security",
+      "tier": "Tier 2: Statutory Life-Safety",
+      "adder_min": 20.0,
+      "adder_max": 25.0,
+      "domains": ["medical_devices", "clinical_tech", "fda_premarket", "samd", "simd"],
+      "certs": ["AAMI TIR57", "Biomedical Security"],
+      "statutory_authority": "Premarket FDA Section 524B Cybersecurity Readiness Sign-Off & Clinical Safety Deployment Clearance",
+      "description": "FDA Section 524B compliance, AAMI TIR57 / ISO 14971 patient safety harm integration, and eSTAR premarket regulatory packaging."
+    },
+    "SE-ICS": {
+      "title": "Industrial Control Systems & Operational Technology",
+      "tier": "Tier 2: Statutory Life-Safety",
+      "adder_min": 20.0,
+      "adder_max": 25.0,
+      "domains": ["ics_scada", "ot_security", "purdue_model", "nerc_cip", "iec_62443"],
+      "certs": ["GICSP", "GRID", "ISA/IEC 62443"],
+      "statutory_authority": "NERC-CIP High/Medium Impact Substation Authorization & Industrial Safety Sign-Off",
+      "description": "IEC 62443, NERC CIP, Purdue Model boundary isolation, and plant safety instrumented systems."
+    },
+    "SE-DFIR": {
+      "title": "Digital Forensics & Incident Response",
+      "tier": "Tier 2: Statutory Life-Safety",
+      "adder_min": 15.0,
+      "adder_max": 20.0,
+      "domains": ["dfir", "digital_forensics", "incident_response", "memory_forensics"],
+      "certs": ["GCFA", "GNFA", "GREM", "EnCE", "CFCE"],
+      "statutory_authority": "Chain-of-Custody Courtroom Expert Attestation & Emergency Surge Dispatch Lead",
+      "description": "ISO/IEC 27037 forensic imaging, volatility analysis, adversary timeline reconstruction, and surge triage."
+    },
+    "SE-OFF": {
+      "title": "Offensive Security & Adversary Emulation",
+      "tier": "Tier 2: Statutory Life-Safety",
+      "adder_min": 15.0,
+      "adder_max": 20.0,
+      "domains": ["offensive_security", "red_teaming", "penetration_testing", "exploit_development"],
+      "certs": ["OSCP", "OSWE", "OSEP", "GXPN", "PNPT"],
+      "statutory_authority": "Board-Authorized Penetration Testing Exemption & Zero-Day Disclosure Sign-Off",
+      "description": "NIST NICE AN-EXP adversary emulation, weaponized proof-of-concept validation, and physical barrier assessments."
+    },
+    "SE-AIML": {
+      "title": "AI / ML Security Assurance",
+      "tier": "Tier 2: Statutory Life-Safety",
+      "adder_min": 15.0,
+      "adder_max": 20.0,
+      "domains": ["ai_ml_security", "llm_security", "adversarial_ml", "model_governance"],
+      "certs": ["NIST AI RMF", "Machine Learning Security"],
+      "statutory_authority": "Autonomous System Safety & Algorithmic Defensibility Sign-Off",
+      "description": "NIST AI RMF (AI 100-1), OWASP Top 10 for LLMs, adversarial model weight integrity, and data poisoning defense."
+    },
+    "SE-CLD": {
+      "title": "Cloud Security & Infrastructure Architecture",
+      "tier": "Tier 1: Discipline Tracking",
+      "adder_min": 10.0,
+      "adder_max": 15.0,
+      "domains": ["cloud_security", "aws_security", "azure_security", "gcp_security", "kubernetes"],
+      "certs": ["CCSP", "AWS Certified Security", "Azure Security Engineer", "CKS"],
+      "statutory_authority": "Multi-Tenant Cloud Control Plane Baseline Verification",
+      "description": "CIS Cloud Benchmarks, infrastructure-as-code security gating, IAM boundary isolation, and immutable workloads."
+    },
+    "SE-APP": {
+      "title": "Application & Software Product Security",
+      "tier": "Tier 1: Discipline Tracking",
+      "adder_min": 0.0,
+      "adder_max": 0.0,
+      "domains": ["appsec", "product_security", "ssdlc", "threat_modeling", "sbom_lifecycle", "psirt"],
+      "certs": ["CSSLP", "GWAPT", "CASE", "CASS"],
+      "statutory_authority": "Software Supply Chain SBOM & Commercial Product Release Clearance",
+      "description": "OWASP SAMM, automated SAST/DAST CI/CD gating, component threat modeling, SBOM lifecycle, and PSIRT triage."
+    },
+    "SE-ICAM": {
+      "title": "Identity, Credential & Access Management",
+      "tier": "Tier 1: Discipline Tracking",
+      "adder_min": 0.0,
+      "adder_max": 0.0,
+      "domains": ["icam", "identity_security", "pam", "zero_trust_identity", "saml_oidc"],
+      "certs": ["CIAM", "CIMP"],
+      "statutory_authority": "Enterprise Identity Authority & Zero-Trust Control Attestation",
+      "description": "NIST SP 800-63 Digital Identity Guidelines, Privileged Access Management (PAM), and federation protocols."
+    },
+    "SE-PKI": {
+      "title": "Cryptographic Infrastructure & Key Management",
+      "tier": "Tier 1: Discipline Tracking",
+      "adder_min": 0.0,
+      "adder_max": 0.0,
+      "domains": ["pki", "cryptography", "key_management", "post_quantum", "hsm"],
+      "certs": ["Certified Cryptographer", "FIPS 140 Lead"],
+      "statutory_authority": "Root Certificate Authority (CA) Generation & Post-Quantum Cryptographic Attestation",
+      "description": "FIPS 140-3 HSM administration, certificate lifecycle management, and Post-Quantum Cryptography (PQC) migration."
+    }
+  }
+}

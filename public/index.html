@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Trade Tier & Grandfathering Estimator</title>
+  <meta name="description" content="If cybersecurity transitioned to a licensed skilled trade today, where would you place on Day 1? Calculate your provisional standing, PLA credits, and wage floors.">
+  
+  <!-- LinkedIn & Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Cybersecurity Trade Project">
+  <meta property="og:title" content="Cybersecurity Trade Tier & Grandfathering Estimator">
+  <meta property="og:description" content="If cybersecurity transitioned to a licensed skilled trade today, where would you place on Day 1? Discover your trade tier, Prior Learning credits, and milestone path.">
+  <meta property="og:image" content="https://danieltolczyk.github.io/cyber-trade-estimator/images/cyber-trade-practitioner.jpg">
+  <meta property="og:url" content="https://danieltolczyk.github.io/cyber-trade-estimator/">
+
+  <link rel="stylesheet" href="styles.css?v=1.8.7">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-badge">COMMUNITY ESTIMATOR &bull; FRAMEWORK v1.6.1</span>
+        <h1>Cybersecurity Trade Tier & Grandfathering Estimator</h1>
+        <p class="subtitle">If cybersecurity transitioned to a licensed skilled trade today, where would you place on Day 1? Calculate your grandfathering standing, Prior Learning credits, and path to the next tier.</p>
+      </div>
+      <div class="header-links">
+        <a href="https://danieltolczyk.github.io/the-cyber-trade-project/" target="_blank" rel="noopener" class="btn btn-outline">Explore The Cyber Trade Project on GitHub &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner: Computer as a Skilled Trade -->
+  <section class="hero-banner">
+    <div class="container hero-grid">
+      <div class="hero-image-wrapper">
+        <img 
+          src="images/cyber-trade-practitioner.jpg" 
+          alt="Practitioner in hard hat and safety vest analyzing systems on laptop"
+          class="hero-img"
+          id="heroImg"
+        >
+        <span class="photo-caption">Hard hats optional: Cybersecurity is an honest-to-goodness skilled trade.</span>
+      </div>
+      <div class="hero-text">
+        <h2>Blueprints, Not Checkboxes.</h2>
+        <p>Cybersecurity is an applied operational trade. Just as electricians, aviation mechanics, and structural engineers maintain critical physical infrastructure, cybersecurity practitioners build and defend the critical digital lifelines of modern society.</p>
+        <p class="hero-subtext">No more checkbox compliance or unpaid internships. Use this tool to calculate your verified runtime hours, Prior Learning Assessment (PLA) credits, and standing in a licensed, worker-first trade framework.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Calculator Grid -->
+  <main class="container main-content">
+    
+    <!-- Full-Width Dynamic Milestone Celebration Banner & Stepper -->
+    <section class="milestone-banner" id="milestoneBanner">
+      <div class="milestone-badge" id="milestoneBadge">TIER 1 UNLOCKED</div>
+      <h2 id="standingTitle">Entry Registered Apprentice (Tier 1)</h2>
+      <p class="milestone-next" id="milestoneNextText">Entry Apprentice: Complete 8,000 operational hours (approx. 4.0 yrs) of paid on-the-job rotations to Journeyman Licensure.</p>
+      
+      <!-- Visual Step Progression Track -->
+      <div class="milestone-stepper" id="milestoneStepper">
+        <div class="stepper-bar-wrap">
+          <div class="stepper-track-bg">
+            <div class="stepper-track-fill" id="stepperTrackFill" style="width: 0%;"></div>
+          </div>
+          <div class="stepper-steps">
+            <div class="step-item active completed" style="left: 0%;" data-step="TIER_1"><span class="dot"></span><span class="step-lbl">T1 (0h)</span></div>
+            <div class="step-item" style="left: 20%;" data-step="TIER_2"><span class="dot"></span><span class="step-lbl">T2 (2k)</span></div>
+            <div class="step-item" style="left: 40%;" data-step="TIER_3"><span class="dot"></span><span class="step-lbl">T3 (4k)</span></div>
+            <div class="step-item" style="left: 60%;" data-step="TIER_4"><span class="dot"></span><span class="step-lbl">T4 (6k)</span></div>
+            <div class="step-item" style="left: 80%;" data-step="JOURNEYMAN"><span class="dot"></span><span class="step-lbl">Journeyman (8k)</span></div>
+            <div class="step-item" style="left: 100%;" data-step="MASTER"><span class="dot"></span><span class="step-lbl">Master (12k)</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="calculator-grid">
+      
+      <!-- Left Column: Input Form -->
+      <div class="form-column">
+        
+        <!-- Track Selection Hub -->
+        <section class="card track-selector-card">
+          <div class="card-title">
+            <span class="step-num">1</span>
+            <div>
+              <h3>Select Your Career Standing & Pathway</h3>
+              <p class="card-desc">Choose between Student & New Entrant intake or Experienced Practitioner Grandfathering.</p>
+            </div>
+          </div>
+
+          <div class="track-tabs-container">
+            <div class="track-category-group">
+              <span class="track-group-label">NEW TO TECH & STUDENTS</span>
+              <div class="track-tabs single-tab">
+                <button type="button" class="track-tab active" data-track="TRACK_ENTRY">
+                  <span class="track-pill">ENTRY PIPELINE</span>
+                  <strong>Students & Stranded Learners</strong>
+                  <small>Free Benchmark Challenge, Bootcamp RTI Credits & Debt Defense</small>
+                </button>
+              </div>
+            </div>
+
+            <div class="track-category-group">
+              <span class="track-group-label">EXPERIENCED PRACTITIONERS (DAY-1 GRANDFATHERING)</span>
+              <div class="track-tabs triple-tabs" id="trackTabs">
+                <button type="button" class="track-tab" data-track="TRACK_A">
+                  <span class="track-pill">TRACK A</span>
+                  <strong>Career Runtime & Peer Review</strong>
+                  <small>Zero Certs Required &bull; 4-8+ Yrs W-2 / 1099 + Affidavits</small>
+                </button>
+                <button type="button" class="track-tab" data-track="TRACK_B">
+                  <span class="track-pill">TRACK B</span>
+                  <strong>Benchmark Fast-Track</strong>
+                  <small>Durable RTI from CISSP, CISM, etc. (Zero AMF Fees)</small>
+                </button>
+                <button type="button" class="track-tab" data-track="TRACK_C">
+                  <span class="track-pill">TRACK C</span>
+                  <strong>Practical Range Challenge</strong>
+                  <small>Proctored 4-Hr Hands-On Exam (Instant 8k hr Journeyman)</small>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Track Entry Form Panel: Pre-Apprenticeship & Stranded Learners (Default Active) -->
+        <div id="panelTrackEntry" class="track-panel active">
+          <!-- Step 2: Prior Experience & Service -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">2</span>
+              <div>
+                <h3>Entry Pipeline: Cross-Skilling & Service Credits</h3>
+                <p class="card-desc">Accredited Prior Learning Assessment (PLA) applied toward early wage step advancement.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="sysadminYearsEntry">Prior IT / SysAdmin / NetEng Experience:</label>
+                <span class="field-badge" id="sysadminYearsValEntry">0 Months (0 hrs PLA)</span>
+              </div>
+              <input type="range" id="sysadminYearsEntry" min="0" max="2" step="0.5" value="0.0" class="slider">
+              <small class="field-hint">Grants 1,000 hrs PLA credit per year (capped at 2,000 hrs toward Tier 2 entry).</small>
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="militaryCyberYearsEntry">Accredited Military Cyber MOS / AFSC:</label>
+                <span class="field-badge" id="militaryCyberYearsValEntry">0 Months (0 hrs PLA)</span>
+              </div>
+              <input type="range" id="militaryCyberYearsEntry" min="0" max="2" step="0.5" value="0.0" class="slider">
+              <small class="field-hint">Army 17C, Navy CWT, Air Force 1B4X1, USMC 1721 (2,000 hrs PLA/yr, up to 4,000 hrs max).</small>
+            </div>
+          </section>
+
+          <!-- Step 3: Bootcamp Articulation & Practical Benchmark Gate -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">3</span>
+              <div>
+                <h3>Coursework Articulation & Benchmark Practical Gate</h3>
+                <p class="card-desc">Fee-free validation, coursework RTI articulation & debt defense under Pillars I & II.</p>
+              </div>
+            </div>
+
+            <div id="plaNoticeEntry" class="pla-cap-banner" style="display: none;">
+              <strong>50% Statutory Residency Cap Reached:</strong> Prior Learning Credits (PLA) are maxed out at 4,000 hrs. Additional degrees/certs cannot exceed this apprenticeship floor.
+            </div>
+
+            <div class="form-group">
+              <label class="group-label">Coursework Articulation & Education Credits (Pillars I & II):</label>
+              <div class="verification-checklist">
+                <label class="verification-item">
+                  <input type="checkbox" id="hasBootcampGradEntry">
+                  <div class="verification-text">
+                    <strong>Completed Commercial / Academic Cybersecurity Bootcamp</strong>
+                    <small>Articulates up to 144 hrs of Year 1 Related Technical Instruction (RTI) classroom credit + 500 hrs PLA.</small>
+                  </div>
+                </label>
+                <label class="verification-item">
+                  <input type="checkbox" id="hasMidProgramEnrolledEntry">
+                  <div class="verification-text">
+                    <strong>Currently Enrolled in Paid Bootcamp / Degree (Challenge-Out Intake)</strong>
+                    <small>Take the free Pre-Apprenticeship Challenge to exit tuition debt and enter paid JATC apprentice dispatch.</small>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label class="group-label">Technical Degrees & Vulnerability Research (PLA Credit):</label>
+              <div class="checkbox-grid">
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="degBachelorEntry" value="Bachelor">
+                  <span class="tile-content">
+                    <strong>Technical Degree</strong>
+                    <small>+2,000 hrs PLA (CS/Cyber)</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="hasBugBountyEntry">
+                  <span class="tile-content">
+                    <strong>Published CVE / Bug Bounty</strong>
+                    <small>+1,500 hrs Domain 4</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Mandatory Benchmark Gate Box -->
+            <div class="benchmark-gate-box">
+              <h4>Mandatory Benchmark Gate for Paid W-2 Dispatch (Pillar I)</h4>
+              <p>Under statutory apprenticeship rules, passing a proctored, hands-on practical lab filter (Linux, TCP/IP, defensive Python) is mandatory to receive unrestricted JATC employer dispatch ($25–$32/hr base).</p>
+              <label class="verification-item" style="border-color: rgba(6, 182, 212, 0.4); background: #090d16;">
+                <input type="checkbox" id="passedPreApprenticeExamEntry">
+                <div class="verification-text">
+                  <strong style="color: var(--accent-cyan);">Passed Free Pre-Apprenticeship Practical Benchmark Challenge</strong>
+                  <small>Verified applied lab competence. Unlocks Tier 1 Registered Apprentice Standing & Paid JATC Employer Dispatch.</small>
+                </div>
+              </label>
+            </div>
+
+            <div class="range-info-box" style="margin-top: 1.25rem;">
+              <h4>About Stranded Learner & Challenge Protection:</h4>
+              <p>Under <strong>Pillars I & II</strong>, the trade framework protects students from predatory training debt. Anyone can challenge the practical benchmark at zero cost, articulate completed coursework toward RTI, and transition directly into a paid, debt-free W-2 apprenticeship.</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Track A Form Panel -->
+        <div id="panelTrackA" class="track-panel">
+          <!-- Step 2: Experience & Runtime -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">2</span>
+              <div>
+                <h3>Track A: Operational Runtime & Experience</h3>
+                <p class="card-desc">Calculated at 2,000 verified operational hours per full-time year.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="cyberYearsA">Active Cybersecurity Experience:</label>
+                <span class="field-badge" id="cyberYearsValA">0 Months (0 hrs)</span>
+              </div>
+              <input type="range" id="cyberYearsA" min="0" max="8" step="0.5" value="0.0" class="slider">
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="sysadminYearsA">Prior IT / SysAdmin / NetEng Experience:</label>
+                <span class="field-badge" id="sysadminYearsValA">0 Months (0 hrs PLA)</span>
+              </div>
+              <input type="range" id="sysadminYearsA" min="0" max="2" step="0.5" value="0.0" class="slider">
+              <small class="field-hint">Grants 1,000 hrs PLA credit per year (capped at 2,000 hrs toward Tier 2 entry).</small>
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="militaryCyberYearsA">Accredited Military Cyber MOS / AFSC:</label>
+                <span class="field-badge" id="militaryCyberYearsValA">0 Months (0 hrs PLA)</span>
+              </div>
+              <input type="range" id="militaryCyberYearsA" min="0" max="2" step="0.5" value="0.0" class="slider">
+              <small class="field-hint">Army 17C, Navy CWT, Air Force 1B4X1, USMC 1721 (2,000 hrs PLA/yr, up to 4,000 hrs max).</small>
+            </div>
+          </section>
+
+          <!-- Step 3: Education & Track A Portfolio -->
+          <!-- Step 3: Track A Prior Learning & Grandfathering Verification -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">3</span>
+              <div>
+                <h3>Track A: Degrees & Grandfathering Verification</h3>
+                <p class="card-desc">Submitted to Regional JATC for Day-1 grandfathering audit.</p>
+              </div>
+            </div>
+
+            <div id="plaNoticeA" class="pla-cap-banner" style="display: none;">
+              <strong>50% Statutory Residency Cap Reached:</strong> Prior Learning Credits (PLA) are maxed out at 4,000 hrs. Additional degrees/certs cannot exceed this apprenticeship floor.
+            </div>
+
+            <div class="form-group">
+              <label class="group-label">Academic Degrees & Research (PLA Credit):</label>
+              <div class="checkbox-grid">
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="degBachelorA" value="Bachelor">
+                  <span class="tile-content">
+                    <strong>Bachelor's Degree</strong>
+                    <small>+2,000 hrs PLA (CS/Cyber)</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="degMasterA" value="Master">
+                  <span class="tile-content">
+                    <strong>Master's Degree</strong>
+                    <small>+3,000 hrs PLA (Cyber)</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="hasBootcampA">
+                  <span class="tile-content">
+                    <strong>Bootcamp Certificate</strong>
+                    <small>+144h RTI / +500h PLA</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="hasBugBountyA">
+                  <span class="tile-content">
+                    <strong>Bug Bounty / CVE</strong>
+                    <small>+1,500 hrs Domain 4</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1.25rem;">
+              <label class="group-label">Track A Journeyman Verification:</label>
+              <div class="verification-checklist">
+                <label class="verification-item disabled" id="itemAffidavitsA">
+                  <input type="checkbox" id="hasAffidavitsA" disabled>
+                  <div class="verification-text">
+                    <strong>Two (2) Professional Peer Reference Affidavits</strong>
+                    <small id="hintAffidavitsA">Confirms operational execution across core defensive domains (Requires 4+ Years Runtime).</small>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label class="group-label">Track A Master Verification:</label>
+              <div class="verification-checklist">
+                <label class="verification-item disabled" id="itemArtifactsA">
+                  <input type="checkbox" id="hasArtifactsA" disabled>
+                  <div class="verification-text">
+                    <strong>Three (3) Sanitized Engineering Artifacts</strong>
+                    <small id="hintArtifactsA">Required for Master Oral Board Defense (Requires 8+ Years Runtime).</small>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Track B Form Panel -->
+        <div id="panelTrackB" class="track-panel">
+          <!-- Step 2: Track B Operational Runtime -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">2</span>
+              <div>
+                <h3>Track B: Operational Runtime & Experience</h3>
+                <p class="card-desc">Combined with benchmark credentials for expedited portfolio processing.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="cyberYearsB">Active Cybersecurity Experience:</label>
+                <span class="field-badge" id="cyberYearsValB">0 Months (0 hrs)</span>
+              </div>
+              <input type="range" id="cyberYearsB" min="0" max="8" step="0.5" value="0.0" class="slider">
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="sysadminYearsB">Prior IT / SysAdmin / NetEng Experience:</label>
+                <span class="field-badge" id="sysadminYearsValB">0 Months (0 hrs PLA)</span>
+              </div>
+              <input type="range" id="sysadminYearsB" min="0" max="2" step="0.5" value="0.0" class="slider">
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="militaryCyberYearsB">Accredited Military Cyber MOS / AFSC:</label>
+                <span class="field-badge" id="militaryCyberYearsValB">0 Months (0 hrs PLA)</span>
+              </div>
+              <input type="range" id="militaryCyberYearsB" min="0" max="2" step="0.5" value="0.0" class="slider">
+              <small class="field-hint">Army 17C, Navy CWT, Air Force 1B4X1, USMC 1721 (2,000 hrs PLA/yr, up to 4,000 hrs max).</small>
+            </div>
+          </section>
+
+          <!-- Step 3: Track B Credentials, Degrees & Verification -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">3</span>
+              <div>
+                <h3>Track B: Credentials, Degrees & Verification</h3>
+                <p class="card-desc">Historical certifications receive permanent durable Related Technical Instruction (RTI) credit.</p>
+              </div>
+            </div>
+
+            <div id="plaNoticeB" class="pla-cap-banner" style="display: none;">
+              <strong>50% Statutory Residency Cap Reached:</strong> Prior Learning Credits (PLA) are maxed out at 4,000 hrs. Additional degrees/certs cannot exceed this apprenticeship floor.
+            </div>
+
+            <div class="form-group">
+              <label class="group-label">Accredited Practical & Foundation Credentials (PLA Credit):</label>
+              <div class="chip-container" id="practicalChipsB"></div>
+              <span class="group-hint">Vendor-neutral hands-on lab and foundational exams credited toward apprentice tiers.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="group-label">Academic Degrees & Research (PLA Credit):</label>
+              <div class="checkbox-grid">
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="degBachelorB" value="Bachelor">
+                  <span class="tile-content">
+                    <strong>Bachelor's Degree</strong>
+                    <small>+2,000 hrs PLA</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="degMasterB" value="Master">
+                  <span class="tile-content">
+                    <strong>Master's Degree</strong>
+                    <small>+3,000 hrs PLA</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="hasBootcampB">
+                  <span class="tile-content">
+                    <strong>Bootcamp Certificate</strong>
+                    <small>+144h RTI / +500h PLA</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="hasBugBountyB">
+                  <span class="tile-content">
+                    <strong>Bug Bounty / CVE</strong>
+                    <small>+1,500 hrs Domain 4</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1.25rem;">
+              <label class="group-label">Track B Journeyman Verification (Permanent RTI Credit):</label>
+              <div class="chip-container" id="benchmarkChipsB"></div>
+              <span class="group-hint">Active or lapsed status accepted. Zero vendor AMF back-fees required.</span>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label class="group-label">Track B Master Verification:</label>
+              <div class="verification-checklist">
+                <label class="verification-item disabled" id="itemOralBoardB">
+                  <input type="checkbox" id="hasOralBoardB" disabled>
+                  <div class="verification-text">
+                    <strong>Master Oral Board Defense Completed</strong>
+                    <small id="hintOralBoardB">Requires 6+ Years Runtime + Benchmark Cert to Enable.</small>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Track C Form Panel: Practical Range Challenge -->
+        <div id="panelTrackC" class="track-panel">
+          <!-- Step 2: Track C Operational Runtime -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">2</span>
+              <div>
+                <h3>Track C: Career Runtime & Experience</h3>
+                <p class="card-desc">Optional career runtime for senior candidates seeking immediate Master Oral Board defense.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="cyberYearsC">Historical Career Defense Runtime:</label>
+                <span class="field-badge" id="cyberYearsValC">0 Months (0 hrs)</span>
+              </div>
+              <input type="range" id="cyberYearsC" min="0" max="8" step="0.5" value="0.0" class="slider">
+              <small class="field-hint">Senior practitioners with 8+ years runtime who pass Track C can immediately defend their Master Portfolio during the grandfathering window.</small>
+            </div>
+          </section>
+
+          <!-- Step 3: Track C Examination & Master Verification -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">3</span>
+              <div>
+                <h3>Practical Range Exam & Master Verification</h3>
+                <p class="card-desc">Proctored hands-on cyber range validation for instant Day-1 Journeyman Licensure.</p>
+              </div>
+            </div>
+
+            <!-- Proctored Exam Hero Toggle -->
+            <div class="range-exam-card">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" id="rangeExamPassed">
+                <span class="checkbox-box"></span>
+                <div class="checkbox-text">
+                  <strong>Passed 4-Hour Proctored Board Practical Range Examination</strong>
+                  <small>Live incident containment, firewall re-configuration, packet triage & system hardening in isolated range.</small>
+                </div>
+              </label>
+              <div class="range-badge-result">Awards Immediate Day-1 Journeyman Licensure (8,000 hr Legal Baseline)</div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1.25rem;">
+              <label class="group-label">Technical Degrees & Vulnerability Research (Master Defense Artifacts):</label>
+              <div class="checkbox-grid">
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="degBachelorC" value="Bachelor">
+                  <span class="tile-content">
+                    <strong>Technical Degree</strong>
+                    <small>+2,000 hrs / CTD Credit</small>
+                  </span>
+                </label>
+                <label class="checkbox-tile">
+                  <input type="checkbox" id="hasBugBountyC">
+                  <span class="tile-content">
+                    <strong>Published CVE / Bug Bounty</strong>
+                    <small>+1,500 hrs / Master Artifact</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1.25rem;">
+              <label class="group-label">Track C Senior Master Verification (Grandfathering Window):</label>
+              <div class="verification-checklist">
+                <label class="verification-item disabled" id="itemArtifactsC">
+                  <input type="checkbox" id="hasArtifactsC" disabled>
+                  <div class="verification-text">
+                    <strong>Three (3) Sanitized Engineering Artifacts (or Published CVEs / Research)</strong>
+                    <small id="hintArtifactsC">Requires Range Exam Passed + 8+ Years Runtime to Enable.</small>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="range-info-box">
+              <h4>About Track C & Master Elevation:</h4>
+              <p>Passing Track C immediately establishes the <strong>8,000-hour Journeyman baseline</strong> with 100% RJPB wage floor standing. Senior practitioners with 8+ years can immediately submit 3 artifacts (published CVEs and technical research count!) for Master Oral Board defense.</p>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Results Dashboard -->
+      <div class="results-column">
+        <section class="card dashboard-card">
+          
+          <!-- What Your Standing Unlocks (Primary Card) -->
+          <div class="authorities-section" id="authoritiesBox">
+            <h4>Operational Authorities & Trade Benefits Unlocked</h4>
+            <ul id="authoritiesList" class="authorities-list">
+              <!-- Populated dynamically via JS -->
+            </ul>
+          </div>
+
+          <!-- Day 1 JATC Portfolio Submission Checklist -->
+          <div class="submission-section" id="submissionBox">
+            <h4>Day 1 JATC Portfolio Checklist</h4>
+            <ul id="submissionList" class="submission-list">
+              <!-- Populated dynamically via JS -->
+            </ul>
+          </div>
+
+          <!-- Operational Hours Summary -->
+          <div class="hours-audit-box">
+            <div class="audit-row">
+              <span>Direct Operational Runtime:</span>
+              <strong id="runtimeHours">0 hrs</strong>
+            </div>
+            <div class="audit-row" id="plaAuditRow">
+              <span>Prior Learning Credit (PLA):</span>
+              <strong id="plaHours">0 hrs (Max 4,000 hrs / 50% cap)</strong>
+            </div>
+            <div class="audit-row total-audit-row">
+              <span>Total Accredited Hours:</span>
+              <strong id="totalHours">0 hrs</strong>
+            </div>
+          </div>
+
+          <!-- Framework Specifications CTAs -->
+          <div class="specs-nav-section" id="specsNavBox">
+            <h4>Explore Full Standards on GitHub</h4>
+            <div class="spec-links-list" id="specLinksGrid">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button id="btnCopySummary" class="btn btn-primary">Share / Copy Placement Summary</button>
+            <button id="btnSample" class="btn btn-outline" title="Fill with sample Journeyman profile">Load Example</button>
+            <button id="btnReset" class="btn btn-outline">Reset Form</button>
+          </div>
+
+          <!-- Privacy & Provisional Notices -->
+          <div class="board-notice-box">
+            <span class="board-notice-badge">100% CLIENT-SIDE PRIVACY GUARANTEE</span>
+            <p>This tool runs entirely within your browser memory. Zero personal inputs, resumes, or telemetry data are ever collected, stored, or transmitted to any server.</p>
+          </div>
+
+          <div class="board-notice-box" style="margin-top: 0.75rem;">
+            <span class="board-notice-badge">PROVISIONAL TESTING SPECIFICATIONS</span>
+            <p>The Pre-Apprenticeship Practical Benchmark Challenge and Track C Proctored Range Examination are conceptual open standards defined in the project framework. Live cyber range topologies, scoring daemons, and clearinghouse proctoring will be officially chartered upon establishment of the tripartite National Cybersecurity Trade Board (NCTB).</p>
+          </div>
+
+          <!-- Governance Disclaimer -->
+          <div class="governance-disclaimer-box" style="margin-top: 0.75rem;">
+            <strong class="disclaimer-title">Important Notice & Governance Disclaimer:</strong>
+            <p id="disclaimerText">
+              This tool is an open-source, community-built estimation model provided for career planning and illustrative purposes. It does not constitute official professional licensure or legal certification. Official licensure issuance and credential auditing are determined exclusively by the National Cybersecurity Trade Board (NCTB) and regional JATC training committees.
+            </p>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Clean Professional Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>The Cybersecurity Trade Project</strong> &bull; An Open-Source Movement to Restructure Cybersecurity as an Accountable Skilled Trade.</p>
+      <p><a href="https://danieltolczyk.github.io/the-cyber-trade-project/" target="_blank" rel="noopener">Framework Documentation</a> &bull; <a href="https://github.com/DanielTolczyk/the-cyber-trade-project" target="_blank" rel="noopener">GitHub Repository</a> &bull; <a href="https://github.com/DanielTolczyk/the-cyber-trade-project/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Community Guide</a> &bull; Dual Licensed CC-BY-4.0 / Apache 2.0</p>
+    </div>
+  </footer>
+
+  <script src="app.js?v=1.8.7"></script>
+</body>
+</html>
