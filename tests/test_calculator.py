@@ -3,7 +3,6 @@
 Tests verify mathematical fidelity against The Cybersecurity Trade Project specifications (v1.5.1).
 """
 
-import pytest
 from cyber_trade_estimator.calculator import (
     PractitionerProfile,
     calculate_trade_standing,
