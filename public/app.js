@@ -848,17 +848,27 @@ document.getElementById("btnCopySummary").addEventListener("click", () => {
     ? "https://danieltolczyk.github.io/cyber-trade-estimator/"
     : window.location.href.split("#")[0];
 
-  const paragraphs = [
+  const plainText = [
     `[TRADE EVALUATION] ${title} (${totalHrs})`,
+    "",
     "If cybersecurity transitioned to an accredited skilled trade today, what tier would you qualify for?",
-    `• Standing: ${title}\r\n• Accredited Runtime: ${totalHrs}\r\n• Transition Pathway: ${trackLabel}\r\n• Key Protections: Statutory Prevailing Wage Floors, 2:1 Line-of-Sight Mentorship & Legal Right of Technical Refusal`,
-    `Discover your trade standing, Prior Learning credits, and milestone path:\r\n${appUrl}`,
+    "",
+    `• Standing: ${title}\n• Accredited Runtime: ${totalHrs}\n• Transition Pathway: ${trackLabel}\n• Key Protections: Statutory Prevailing Wage Floors, 2:1 Line-of-Sight Mentorship & Legal Right of Technical Refusal`,
+    "",
+    `Discover your trade standing, Prior Learning credits, and milestone path:\n${appUrl}`,
+    "",
     "#Cybersecurity #InfoSec #Apprenticeship #WorkforceDevelopment #CyberTradeProject"
-  ];
+  ].join("\n");
 
-  const summary = paragraphs.join("\r\n\r\n");
+  const htmlText = [
+    `<p><strong>[TRADE EVALUATION] ${title} (${totalHrs})</strong></p>`,
+    "<p>If cybersecurity transitioned to an accredited skilled trade today, what tier would you qualify for?</p>",
+    `<p>• Standing: ${title}<br>• Accredited Runtime: ${totalHrs}<br>• Transition Pathway: ${trackLabel}<br>• Key Protections: Statutory Prevailing Wage Floors, 2:1 Line-of-Sight Mentorship &amp; Legal Right of Technical Refusal</p>`,
+    `<p>Discover your trade standing, Prior Learning credits, and milestone path:<br><a href="${appUrl}">${appUrl}</a></p>`,
+    "<p>#Cybersecurity #InfoSec #Apprenticeship #WorkforceDevelopment #CyberTradeProject</p>"
+  ].join("\n");
 
-  navigator.clipboard.writeText(summary).then(() => {
+  const showCopiedFeedback = () => {
     const btn = document.getElementById("btnCopySummary");
     const orig = btn.textContent;
     btn.textContent = "✓ Copied to Clipboard!";
@@ -869,7 +879,22 @@ document.getElementById("btnCopySummary").addEventListener("click", () => {
       btn.style.backgroundColor = "";
       btn.style.borderColor = "";
     }, 2500);
-  });
+  };
+
+  if (navigator.clipboard && window.ClipboardItem) {
+    const blobPlain = new Blob([plainText], { type: "text/plain" });
+    const blobHtml = new Blob([htmlText], { type: "text/html" });
+    navigator.clipboard.write([
+      new ClipboardItem({
+        "text/plain": blobPlain,
+        "text/html": blobHtml
+      })
+    ]).then(showCopiedFeedback).catch(() => {
+      navigator.clipboard.writeText(plainText).then(showCopiedFeedback);
+    });
+  } else {
+    navigator.clipboard.writeText(plainText).then(showCopiedFeedback);
+  }
 });
 
 document.getElementById("btnReset").addEventListener("click", () => {
