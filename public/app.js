@@ -78,7 +78,7 @@ function calculateStanding() {
       itemAff.classList.toggle("disabled", !canHaveAffidavits);
       if (hintAff) {
         hintAff.textContent = canHaveAffidavits 
-          ? "Runtime Prerequisite Met: Check to confirm two peer reference affidavits." 
+          ? "Prerequisite Met: Check to confirm two peer reference affidavits." 
           : "Requires 4+ Years (8,000 hrs) Runtime to Enable.";
       }
       if (!canHaveAffidavits) elAff.checked = false;
@@ -92,7 +92,7 @@ function calculateStanding() {
       itemArt.classList.toggle("disabled", !canHaveArtifacts);
       if (hintArt) {
         hintArt.textContent = canHaveArtifacts 
-          ? "Runtime Prerequisite Met: Check to verify three sanitized engineering artifacts." 
+          ? "Senior Prerequisite Met: Check to verify three defense artifacts." 
           : "Requires 8+ Years (16,000 hrs) Runtime to Enable.";
       }
       if (!canHaveArtifacts) elArt.checked = false;
@@ -100,6 +100,22 @@ function calculateStanding() {
 
     const hasAffidavits = elAff ? elAff.checked : false;
     const hasArtifacts = elArt ? elArt.checked : false;
+
+    const canHaveOral = canHaveArtifacts && hasArtifacts;
+    const elOralA = document.getElementById("hasOralBoardA");
+    const itemOralA = document.getElementById("itemOralBoardA");
+    const hintOralA = document.getElementById("hintOralBoardA");
+    if (elOralA && itemOralA) {
+      elOralA.disabled = !canHaveOral;
+      itemOralA.classList.toggle("disabled", !canHaveOral);
+      if (hintOralA) {
+        hintOralA.textContent = canHaveOral
+          ? "Oral Board Defense Ready: Check if portfolio defense has been completed."
+          : "Requires 8+ Years Runtime + 3 Artifacts to Enable.";
+      }
+      if (!canHaveOral) elOralA.checked = false;
+    }
+    const hasOralBoardA = elOralA ? elOralA.checked : false;
 
     if (cyberYears > 0) submissionChecklist.push(`W-2 / 1099 / DD-214 Operational Runtime Verification (${cyberYears} Yrs / ${runtimeHours.toLocaleString()} hrs)`);
     if (sysadminYears > 0) submissionChecklist.push(`Documented IT / SysAdmin Production Work (${sysadminYears} Yrs / ${Math.min(2000, sysadminYears * 1000).toLocaleString()} hrs PLA)`);
@@ -109,43 +125,50 @@ function calculateStanding() {
     if (hasBootcampA) submissionChecklist.push("Bootcamp Certificate & Coursework Portfolio (144 hr RTI Articulation Waiver)");
     if (hasBounty) submissionChecklist.push("Verified Vulnerability Disclosures / Published CVEs (+1,500 hrs Domain 4)");
     if (hasAffidavits) submissionChecklist.push("Two (2) Sworn Professional Peer Reference Affidavits");
-    if (hasArtifacts) submissionChecklist.push("Three (3) Sanitized Technical Engineering Artifacts");
+    if (hasArtifacts) submissionChecklist.push("Three (3) Sanitized Technical Defense Artifacts");
+    if (hasOralBoardA) submissionChecklist.push("Master Oral Board Defense Examination Verification");
 
     if (totalAccredited >= 16000 || cyberYears >= 8.0) {
-      if (hasAffidavits && hasArtifacts) {
+      if (hasAffidavits && hasArtifacts && hasOralBoardA) {
         tierCode = "MASTER";
-        standingTitle = "Legacy Master Practitioner";
-        badgeText = "TRACK A • MASTER UNLOCKED";
+        standingTitle = "Conferred Master Practitioner";
+        badgeText = "TRACK A • MASTER CONFERRED";
         progressPct = 100;
-        nextMilestoneText = "Track A Senior Portfolio Complete: 8+ years runtime + 2 peer affidavits + 3 engineering artifacts verified. Master Practitioner standing awarded.";
+        nextMilestoneText = "Track A Senior Portfolio Finalized: 8+ years runtime + 2 peer affidavits + 3 defense artifacts + Oral Board defense completed. Master Practitioner standing awarded.";
+      } else if (hasAffidavits && hasArtifacts) {
+        tierCode = "JOURNEYMAN";
+        standingTitle = "Master Candidate (Oral Board Ready)";
+        badgeText = "TRACK A • MASTER DEFENSE READY";
+        progressPct = 96; // Stops right short of 100% Master dot!
+        nextMilestoneText = "Senior Portfolio Ready: 16,000+ accredited runtime hours and 3 defense artifacts verified. Schedule and complete your Master Oral Board Defense to finalize full Master Practitioner licensure.";
       } else if (hasAffidavits) {
         tierCode = "JOURNEYMAN";
-        standingTitle = "Master Candidate (Oral Board Defense Pending)";
-        badgeText = "TRACK A • ORAL BOARD PENDING";
-        progressPct = 96; // Stops right short of 100% Master dot!
-        nextMilestoneText = "Journeyman Licensure Unlocked: 16,000+ accredited runtime hours met. Submit Three (3) Sanitized Engineering Artifacts and complete your Master Oral Board Defense to unlock full Master Practitioner standing.";
+        standingTitle = "Licensed Journeyman (Senior Runtime Met)";
+        badgeText = "TRACK A • JOURNEYMAN UNLOCKED";
+        progressPct = 85;
+        nextMilestoneText = "Journeyman Licensure Unlocked: 16,000+ accredited runtime hours met. Assemble Three (3) Sanitized Defense Artifacts to qualify for Master Oral Board Defense.";
       } else {
         tierCode = "TIER_4";
         standingTitle = "Apprentice Tier 4 (Affidavits Required)";
         badgeText = "TRACK A • AFFIDAVITS REQUIRED";
         progressPct = 78;
-        nextMilestoneText = "Runtime Threshold Met (8+ Yrs): Track A Day-1 Journeyman Grandfathering requires Two (2) Peer Reference Affidavits confirming core operational execution. Check the box above to verify.";
+        nextMilestoneText = "Runtime Threshold Met (8+ Yrs): Track A Journeyman Grandfathering requires Two (2) Peer Reference Affidavits confirming core operational execution. Check the box above to verify.";
       }
     } else if (totalAccredited >= 8000 || cyberYears >= 4.0) {
       if (hasAffidavits) {
         tierCode = "JOURNEYMAN";
-        standingTitle = "Legacy Licensed Journeyman";
+        standingTitle = "Licensed Journeyman";
         badgeText = "TRACK A • JOURNEYMAN UNLOCKED";
         const remHours = Math.max(0, 16000 - totalAccredited);
         const remYrs = (remHours / 2000).toFixed(1);
-        progressPct = 80 + Math.min(20, ((totalAccredited - 8000) / 8000) * 20);
-        nextMilestoneText = `Track A Grandfathering Qualified (Zero Certs Required): Direct Day-1 Journeyman Licensure. You are ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) and 3 artifacts from Master Practitioner standing.`;
+        progressPct = 80 + Math.min(15, ((totalAccredited - 8000) / 8000) * 15);
+        nextMilestoneText = `Track A Grandfathering Qualified (Zero Certs Required): Direct Journeyman Licensure. You are ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) and 3 artifacts from Master Practitioner standing.`;
       } else {
         tierCode = "TIER_4";
         standingTitle = "Apprentice Tier 4 (Affidavits Required)";
         badgeText = "TRACK A • AFFIDAVITS REQUIRED";
         progressPct = 78;
-        nextMilestoneText = "Runtime Threshold Met (4+ Yrs): Track A Day-1 Journeyman Grandfathering requires Two (2) Peer Reference Affidavits confirming core operational execution. Check the box above to verify.";
+        nextMilestoneText = "Runtime Threshold Met (4+ Yrs): Track A Journeyman Grandfathering requires Two (2) Peer Reference Affidavits confirming core operational execution. Check the box above to verify.";
       }
     } else if (totalAccredited >= 6000) {
       tierCode = "TIER_4";
@@ -154,7 +177,7 @@ function calculateStanding() {
       progressPct = 60 + ((totalAccredited - 6000) / 2000) * 20;
       const remHours = 8000 - totalAccredited;
       const remYrs = (remHours / 2000).toFixed(1);
-      nextMilestoneText = `Day 1 Transition Placement: You slot directly into Tier 4. Only ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
+      nextMilestoneText = `Grandfathering Placement: You qualify for Tier 4. Only ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
     } else if (totalAccredited >= 4000) {
       tierCode = "TIER_3";
       standingTitle = "Intermediate Registered Apprentice (Tier 3)";
@@ -162,7 +185,7 @@ function calculateStanding() {
       progressPct = 40 + ((totalAccredited - 4000) / 2000) * 20;
       const remHours = 8000 - totalAccredited;
       const remYrs = (remHours / 2000).toFixed(1);
-      nextMilestoneText = `Day 1 Transition Placement: You slot directly into Tier 3. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
+      nextMilestoneText = `Grandfathering Placement: You qualify for Tier 3. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
     } else if (totalAccredited >= 2000) {
       tierCode = "TIER_2";
       standingTitle = "Progressing Registered Apprentice (Tier 2)";
@@ -170,13 +193,13 @@ function calculateStanding() {
       progressPct = 20 + ((totalAccredited - 2000) / 2000) * 20;
       const remHours = 8000 - totalAccredited;
       const remYrs = (remHours / 2000).toFixed(1);
-      nextMilestoneText = `Day 1 Transition Placement: You slot directly into Tier 2. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
+      nextMilestoneText = `Grandfathering Placement: You qualify for Tier 2. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
     } else {
       tierCode = "TIER_1";
       standingTitle = "Entry Registered Apprentice (Tier 1)";
       badgeText = "TIER 1 UNLOCKED";
       progressPct = (totalAccredited / 2000) * 20;
-      nextMilestoneText = "Day 1 Entry Apprentice: Complete 8,000 operational hours of structured paid rotations with zero student debt.";
+      nextMilestoneText = "Entry Registered Apprentice: Complete 8,000 operational hours of structured paid rotations with zero student debt.";
     }
   } else if (currentTrack === "TRACK_B") {
     const cyberYears = parseFloat(document.getElementById("cyberYearsB").value) || 0;
@@ -203,45 +226,77 @@ function calculateStanding() {
     const totalAccredited = runtimeHours + plaHours;
     const hasBenchmark = BENCHMARK_CERTS.some(c => selectedCertsB.has(c.code));
     
-    const canHaveOralBoard = hasBenchmark && (totalAccredited >= 12000 || cyberYears >= 6.0);
+    const canHaveArtifactsB = hasBenchmark && (totalAccredited >= 12000 || cyberYears >= 6.0);
+    const elArtB = document.getElementById("hasArtifactsB");
+    const itemArtB = document.getElementById("itemArtifactsB");
+    const hintArtB = document.getElementById("hintArtifactsB");
+    if (elArtB && itemArtB) {
+      elArtB.disabled = !canHaveArtifactsB;
+      itemArtB.classList.toggle("disabled", !canHaveArtifactsB);
+      if (hintArtB) {
+        hintArtB.textContent = canHaveArtifactsB 
+          ? "Senior Fast-Track Met: Check to verify three defense artifacts." 
+          : "Requires 6+ Years Runtime + Benchmark Cert to Enable.";
+      }
+      if (!canHaveArtifactsB) elArtB.checked = false;
+    }
+    const hasArtifactsB = elArtB ? elArtB.checked : false;
+
+    const canHaveOralBoardB = canHaveArtifactsB && hasArtifactsB;
     const elOral = document.getElementById("hasOralBoardB");
     const itemOral = document.getElementById("itemOralBoardB");
     const hintOral = document.getElementById("hintOralBoardB");
     if (elOral && itemOral) {
-      elOral.disabled = !canHaveOralBoard;
-      itemOral.classList.toggle("disabled", !canHaveOralBoard);
+      elOral.disabled = !canHaveOralBoardB;
+      itemOral.classList.toggle("disabled", !canHaveOralBoardB);
       if (hintOral) {
-        hintOral.textContent = canHaveOralBoard 
-          ? "Senior Fast-Track Met: Check to confirm successful Master Oral Board defense." 
-          : "Requires 6+ Years Runtime + Benchmark Cert to Enable.";
+        hintOral.textContent = canHaveOralBoardB 
+          ? "Oral Board Defense Ready: Check if portfolio defense has been completed." 
+          : "Requires 6+ Years Runtime + Benchmark Cert + 3 Artifacts to Enable.";
       }
-      if (!canHaveOralBoard) elOral.checked = false;
+      if (!canHaveOralBoardB) elOral.checked = false;
     }
-
     const hasOralBoardB = elOral ? elOral.checked : false;
 
+    if (cyberYears > 0) submissionChecklist.push(`W-2 / 1099 / DD-214 Operational Runtime Verification (${cyberYears} Yrs / ${runtimeHours.toLocaleString()} hrs)`);
+    selectedCertsB.forEach(c => submissionChecklist.push(`Certified Credential Record: ${c} (Permanent RTI Credit)`));
+    if (sysadminYears > 0) submissionChecklist.push(`Documented IT / SysAdmin Production Work (${sysadminYears} Yrs / ${Math.min(2000, sysadminYears * 1000).toLocaleString()} hrs PLA)`);
+    if (militaryYears > 0) submissionChecklist.push(`DD-214 Military Cyber MOS Record (${militaryYears} Yrs / ${Math.min(4000, militaryYears * 2000).toLocaleString()} hrs PLA)`);
+    if (hasBach) submissionChecklist.push("Accredited Bachelor's Degree Transcript (+2,000 hrs PLA)");
+    if (hasMast) submissionChecklist.push("Accredited Master's Degree Transcript (+3,000 hrs PLA)");
+    if (hasBootcampB) submissionChecklist.push("Bootcamp Certificate & Coursework Portfolio (144 hr RTI Articulation Waiver)");
+    if (hasBounty) submissionChecklist.push("Verified Vulnerability Disclosures / Published CVEs (+1,500 hrs Domain 4)");
+    if (hasArtifactsB) submissionChecklist.push("Three (3) Sanitized Technical Defense Artifacts");
+    if (hasOralBoardB) submissionChecklist.push("Master Oral Board Defense Examination Verification");
+
     if (hasBenchmark && (totalAccredited >= 12000 || cyberYears >= 6.0)) {
-      if (hasOralBoardB) {
+      if (hasArtifactsB && hasOralBoardB) {
         tierCode = "MASTER";
-        standingTitle = "Legacy Master Practitioner";
-        badgeText = "TRACK B • MASTER UNLOCKED";
+        standingTitle = "Conferred Master Practitioner";
+        badgeText = "TRACK B • MASTER CONFERRED";
         progressPct = 100;
-        nextMilestoneText = "Track B Senior Fast-Track Complete: Benchmark RTI + 6+ years verified runtime + Master Oral Board defense passed.";
+        nextMilestoneText = "Track B Senior Fast-Track Finalized: Benchmark RTI + 6+ years verified runtime + 3 defense artifacts + Master Oral Board defense completed. Master Practitioner standing awarded.";
+      } else if (hasArtifactsB) {
+        tierCode = "JOURNEYMAN";
+        standingTitle = "Master Candidate (Oral Board Ready)";
+        badgeText = "TRACK B • MASTER DEFENSE READY";
+        progressPct = 96; // Stops right short of 100% Master dot!
+        nextMilestoneText = "Senior Fast-Track Ready: 12,000+ accredited runtime hours, Benchmark RTI, and 3 defense artifacts verified. Schedule and complete your Master Oral Board Defense to finalize full Master Practitioner licensure.";
       } else {
         tierCode = "JOURNEYMAN";
-        standingTitle = "Master Candidate (Oral Board Defense Pending)";
-        badgeText = "TRACK B • ORAL BOARD PENDING";
-        progressPct = 96; // Stops right short of 100% Master dot!
-        nextMilestoneText = "Journeyman Fast-Track Unlocked: Senior 6+ year runtime and Benchmark RTI met. Complete your Master Oral Board Defense to unlock full Master Practitioner standing.";
+        standingTitle = "Licensed Journeyman (Senior Fast-Track Met)";
+        badgeText = "TRACK B • JOURNEYMAN UNLOCKED";
+        progressPct = 85;
+        nextMilestoneText = "Journeyman Fast-Track Unlocked: Senior 6+ year runtime and Benchmark RTI met. Assemble Three (3) Sanitized Defense Artifacts to qualify for Master Oral Board Defense.";
       }
     } else if (hasBenchmark && (totalAccredited >= 8000 || cyberYears >= 4.0)) {
       tierCode = "JOURNEYMAN";
-      standingTitle = "Legacy Licensed Journeyman";
+      standingTitle = "Licensed Journeyman";
       badgeText = "TRACK B • JOURNEYMAN UNLOCKED";
       const remHours = Math.max(0, 12000 - totalAccredited);
       const remYrs = (remHours / 2000).toFixed(1);
-      progressPct = 80 + Math.min(20, ((totalAccredited - 8000) / 4000) * 20);
-      nextMilestoneText = `Track B Benchmark Fast-Track Qualified: Direct Day-1 Journeyman Licensure. You are ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) from Master Practitioner standing.`;
+      progressPct = 80 + Math.min(15, ((totalAccredited - 8000) / 4000) * 15);
+      nextMilestoneText = `Track B Benchmark Fast-Track Qualified: Direct Journeyman Licensure. You are ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) from Master Practitioner standing.`;
     } else if (totalAccredited >= 8000 || cyberYears >= 4.0) {
       // 4+ Years runtime in Track B but missing Benchmark Cert
       tierCode = "TIER_4";
@@ -256,7 +311,7 @@ function calculateStanding() {
       progressPct = 60 + Math.min(18, ((totalAccredited - 6000) / 2000) * 20);
       const remHours = 8000 - totalAccredited;
       const remYrs = (remHours / 2000).toFixed(1);
-      nextMilestoneText = `Day 1 Transition Placement: You slot directly into Tier 4. Only ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
+      nextMilestoneText = `Grandfathering Placement: You qualify for Tier 4. Only ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
     } else if (totalAccredited >= 4000) {
       tierCode = "TIER_3";
       standingTitle = "Intermediate Registered Apprentice (Tier 3)";
@@ -264,7 +319,7 @@ function calculateStanding() {
       progressPct = 40 + Math.min(18, ((totalAccredited - 4000) / 2000) * 20);
       const remHours = 8000 - totalAccredited;
       const remYrs = (remHours / 2000).toFixed(1);
-      nextMilestoneText = `Day 1 Transition Placement: You slot directly into Tier 3. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
+      nextMilestoneText = `Grandfathering Placement: You qualify for Tier 3. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
     } else if (totalAccredited >= 2000) {
       tierCode = "TIER_2";
       standingTitle = "Progressing Registered Apprentice (Tier 2)";
@@ -272,23 +327,14 @@ function calculateStanding() {
       progressPct = 20 + Math.min(18, ((totalAccredited - 2000) / 2000) * 20);
       const remHours = 8000 - totalAccredited;
       const remYrs = (remHours / 2000).toFixed(1);
-      nextMilestoneText = `Day 1 Transition Placement: You slot directly into Tier 2. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
+      nextMilestoneText = `Grandfathering Placement: You qualify for Tier 2. ${remHours.toLocaleString()} operational hours (approx. ${remYrs} yrs) remaining to Journeyman Licensure.`;
     } else {
       tierCode = "TIER_1";
       standingTitle = "Entry Registered Apprentice (Tier 1)";
       badgeText = "TIER 1 UNLOCKED";
       progressPct = Math.min(18, (totalAccredited / 2000) * 20);
-      nextMilestoneText = "Day 1 Entry Apprentice: Complete paid rotational program to Journeyman Licensure.";
+      nextMilestoneText = "Entry Registered Apprentice: Complete paid rotational program to Journeyman Licensure.";
     }
-    if (cyberYears > 0) submissionChecklist.push(`W-2 / 1099 / DD-214 Operational Runtime Verification (${cyberYears} Yrs / ${runtimeHours.toLocaleString()} hrs)`);
-    selectedCertsB.forEach(c => submissionChecklist.push(`Certified Credential Record: ${c} (Permanent RTI Credit)`));
-    if (sysadminYears > 0) submissionChecklist.push(`Documented IT / SysAdmin Production Work (${sysadminYears} Yrs / ${Math.min(2000, sysadminYears * 1000).toLocaleString()} hrs PLA)`);
-    if (militaryYears > 0) submissionChecklist.push(`DD-214 Military Cyber MOS Record (${militaryYears} Yrs / ${Math.min(4000, militaryYears * 2000).toLocaleString()} hrs PLA)`);
-    if (hasBach) submissionChecklist.push("Accredited Bachelor's Degree Transcript (+2,000 hrs PLA)");
-    if (hasMast) submissionChecklist.push("Accredited Master's Degree Transcript (+3,000 hrs PLA)");
-    if (hasBootcampB) submissionChecklist.push("Bootcamp Certificate & Coursework Portfolio (144 hr RTI Articulation Waiver)");
-    if (hasBounty) submissionChecklist.push("Verified Vulnerability Disclosures / Published CVEs (+1,500 hrs Domain 4)");
-    if (hasOralBoardB) submissionChecklist.push("Master Oral Board Defense Examination Verification");
   } else if (currentTrack === "TRACK_C") {
     const passedRangeExam = document.getElementById("rangeExamPassed").checked;
     const cyberYearsC = parseFloat(document.getElementById("cyberYearsC").value) || 0;
@@ -314,6 +360,22 @@ function calculateStanding() {
     }
     const hasArtifactsC = elArtC ? elArtC.checked : false;
 
+    const canHaveOralBoardC = canHaveArtifactsC && hasArtifactsC;
+    const elOralC = document.getElementById("hasOralBoardC");
+    const itemOralC = document.getElementById("itemOralBoardC");
+    const hintOralC = document.getElementById("hintOralBoardC");
+    if (elOralC && itemOralC) {
+      elOralC.disabled = !canHaveOralBoardC;
+      itemOralC.classList.toggle("disabled", !canHaveOralBoardC);
+      if (hintOralC) {
+        hintOralC.textContent = canHaveOralBoardC
+          ? "Oral Board Defense Ready: Check if portfolio defense has been completed."
+          : "Requires Range Exam + 8+ Years Runtime + 3 Artifacts to Enable.";
+      }
+      if (!canHaveOralBoardC) elOralC.checked = false;
+    }
+    const hasOralBoardC = elOralC ? elOralC.checked : false;
+
     if (hasBounty) plaHours += 1500;
     if (hasBach) plaHours += 2000;
     plaHours = Math.min(4000, plaHours);
@@ -321,35 +383,42 @@ function calculateStanding() {
     if (passedRangeExam) {
       runtimeHours = 8000 + Math.round(cyberYearsC * 2000);
       if (cyberYearsC >= 8.0) {
-        if (hasArtifactsC) {
+        if (hasArtifactsC && hasOralBoardC) {
           tierCode = "MASTER";
-          standingTitle = "Legacy Master Practitioner";
-          badgeText = "TRACK C • MASTER UNLOCKED";
+          standingTitle = "Conferred Master Practitioner";
+          badgeText = "TRACK C • MASTER CONFERRED";
           progressPct = 100;
-          nextMilestoneText = "Track C Senior Fast-Track Complete: Range Challenge Passed + 8+ years runtime + 3 engineering artifacts verified. Master Practitioner standing awarded.";
-        } else {
+          nextMilestoneText = "Track C Senior Fast-Track Finalized: Range Challenge Passed + 8+ years runtime + 3 defense artifacts + Master Oral Board defense completed. Master Practitioner standing awarded.";
+        } else if (hasArtifactsC) {
           tierCode = "JOURNEYMAN";
           standingTitle = "Master Candidate (Senior Range Challenge Winner)";
-          badgeText = "TRACK C • ORAL BOARD PENDING";
+          badgeText = "TRACK C • MASTER DEFENSE READY";
           progressPct = 96;
-          nextMilestoneText = "Senior Range Challenge Winner (8+ Yrs Runtime): Day-1 Journeyman Licensure awarded. Check 'Three (3) Sanitized Engineering Artifacts' to unlock Master Oral Board defense standing.";
+          nextMilestoneText = "Senior Range Challenge Winner (8+ Yrs Runtime): Journeyman Licensure awarded and 3 defense artifacts verified. Schedule and complete your Master Oral Board Defense to finalize full Master Practitioner standing.";
+        } else {
+          tierCode = "JOURNEYMAN";
+          standingTitle = "Licensed Journeyman (Senior Range Certified)";
+          badgeText = "TRACK C • JOURNEYMAN UNLOCKED";
+          progressPct = 85;
+          nextMilestoneText = "Senior Range Winner (8+ Yrs Runtime): Journeyman Licensure awarded. Assemble Three (3) Sanitized Defense Artifacts to qualify for Master Oral Board Defense.";
         }
       } else {
         tierCode = "JOURNEYMAN";
         standingTitle = "Licensed Journeyman (Range Certified)";
         badgeText = "TRACK C • JOURNEYMAN UNLOCKED";
         progressPct = 80;
-        nextMilestoneText = "Track C Practical Challenge Passed: Immediate Day-1 Licensed Journeyman standing (8,000 hr legal baseline). You are 4,000 operational hours (approx. 2.0 yrs) from standard Master elevation.";
+        nextMilestoneText = "Track C Practical Challenge Passed: Direct Licensed Journeyman standing (8,000 hr legal baseline). You are 4,000 operational hours (approx. 2.0 yrs) from standard Master elevation.";
       }
       submissionChecklist.push("JATC 4-Hour Practical Challenge Examination Passing Score Report (8,000 hr Baseline)");
       if (cyberYearsC > 0) submissionChecklist.push(`Operational Runtime Verification Records (${cyberYearsC} Yrs)`);
-      if (hasArtifactsC) submissionChecklist.push("Three (3) Sanitized Technical Engineering Artifacts / CVE Disclosures");
+      if (hasArtifactsC) submissionChecklist.push("Three (3) Sanitized Technical Defense Artifacts / CVE Disclosures");
+      if (hasOralBoardC) submissionChecklist.push("Master Oral Board Defense Examination Verification");
     } else {
       tierCode = plaHours >= 2000 ? "TIER_2" : "TIER_1";
       standingTitle = plaHours >= 2000 ? "Progressing Registered Apprentice (Tier 2)" : "Candidate for Practical Range Challenge";
       badgeText = "TRACK C • READY FOR RANGE EXAM";
       progressPct = (plaHours / 2000) * 20;
-      nextMilestoneText = "Practical Range Track: Pass the proctored 4-hour hands-on challenge examination to receive immediate Day-1 Journeyman Licensure (8,000 hr baseline).";
+      nextMilestoneText = "Practical Range Track: Pass the proctored 4-hour hands-on challenge examination to receive direct Journeyman Licensure (8,000 hr baseline).";
       submissionChecklist.push("Pre-Registration for JATC Practical Challenge Examination");
     }
 
@@ -560,7 +629,7 @@ function calculateStanding() {
     if (currentTrack === "TRACK_A") {
       advancementItems.push("<strong>Grandfathering Fast-Track:</strong> Alternatively, submit Two (2) Sworn Peer Reference Affidavits once 8,000 total hours are reached.");
     } else if (currentTrack === "TRACK_B") {
-      advancementItems.push("<strong>Benchmark Fast-Track:</strong> Select a recognized benchmark credential (CISSP, CISM, CISA, CCSP) to unlock immediate Day-1 licensure once 8,000 hours are reached.");
+      advancementItems.push("<strong>Benchmark Fast-Track:</strong> Select a recognized benchmark credential (CISSP, CISM, CISA, CCSP) to unlock direct grandfathered licensure once 8,000 hours are reached.");
     } else {
       advancementItems.push("<strong>Licensure Examination:</strong> Pass the proctored NCTB Hands-On Practical Challenge Examination.");
     }
@@ -758,9 +827,9 @@ document.getElementById("militaryCyberYearsEntry").addEventListener("input", (e)
 });
 
 [
-  "degBachelorA", "degMasterA", "hasBootcampA", "hasBugBountyA", "hasAffidavitsA", "hasArtifactsA",
-  "degBachelorB", "degMasterB", "hasBootcampB", "hasBugBountyB", "hasOralBoardB",
-  "rangeExamPassed", "hasArtifactsC", "hasBugBountyC", "degBachelorC",
+  "degBachelorA", "degMasterA", "hasBootcampA", "hasBugBountyA", "hasAffidavitsA", "hasArtifactsA", "hasOralBoardA",
+  "degBachelorB", "degMasterB", "hasBootcampB", "hasBugBountyB", "hasArtifactsB", "hasOralBoardB",
+  "rangeExamPassed", "hasArtifactsC", "hasOralBoardC", "hasBugBountyC", "degBachelorC",
   "hasBootcampGradEntry", "hasMidProgramEnrolledEntry", "passedPreApprenticeExamEntry", "hasBugBountyEntry", "degBachelorEntry"
 ].forEach(id => {
   const el = document.getElementById(id);
@@ -781,7 +850,7 @@ document.getElementById("btnCopySummary").addEventListener("click", () => {
 
   const paragraphs = [
     `[TRADE EVALUATION] ${title} (${totalHrs})`,
-    "If cybersecurity transitioned to an accredited skilled trade today, what tier would you place in on Day 1?",
+    "If cybersecurity transitioned to an accredited skilled trade today, what tier would you qualify for?",
     `• Standing: ${title}\r\n• Accredited Runtime: ${totalHrs}\r\n• Transition Pathway: ${trackLabel}\r\n• Key Protections: Statutory Prevailing Wage Floors, 2:1 Line-of-Sight Mentorship & Legal Right of Technical Refusal`,
     `Discover your trade standing, Prior Learning credits, and milestone path:\r\n${appUrl}`,
     "#Cybersecurity #InfoSec #Apprenticeship #WorkforceDevelopment #CyberTradeProject"
@@ -818,6 +887,7 @@ document.getElementById("btnReset").addEventListener("click", () => {
   document.getElementById("hasBugBountyA").checked = false;
   document.getElementById("hasAffidavitsA").checked = false;
   document.getElementById("hasArtifactsA").checked = false;
+  if (document.getElementById("hasOralBoardA")) document.getElementById("hasOralBoardA").checked = false;
 
   document.getElementById("cyberYearsB").value = 0.0;
   document.getElementById("cyberYearsValB").textContent = "0 Months (0 hrs)";
@@ -829,12 +899,14 @@ document.getElementById("btnReset").addEventListener("click", () => {
   document.getElementById("degMasterB").checked = false;
   if (document.getElementById("hasBootcampB")) document.getElementById("hasBootcampB").checked = false;
   document.getElementById("hasBugBountyB").checked = false;
+  if (document.getElementById("hasArtifactsB")) document.getElementById("hasArtifactsB").checked = false;
   if (document.getElementById("hasOralBoardB")) document.getElementById("hasOralBoardB").checked = false;
 
   document.getElementById("rangeExamPassed").checked = false;
   document.getElementById("cyberYearsC").value = 0.0;
   document.getElementById("cyberYearsValC").textContent = "0 Months (0 hrs)";
   if (document.getElementById("hasArtifactsC")) document.getElementById("hasArtifactsC").checked = false;
+  if (document.getElementById("hasOralBoardC")) document.getElementById("hasOralBoardC").checked = false;
   document.getElementById("hasBugBountyC").checked = false;
   document.getElementById("degBachelorC").checked = false;
 

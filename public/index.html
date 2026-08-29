@@ -16,11 +16,11 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Cybersecurity Trade Project">
   <meta property="og:title" content="Cybersecurity Trade Tier & Grandfathering Estimator">
-  <meta property="og:description" content="If cybersecurity transitioned to a licensed skilled trade today, where would you place on Day 1? Discover your trade tier, Prior Learning credits, and milestone path.">
+  <meta property="og:description" content="If cybersecurity transitioned to an accredited skilled trade today, what tier would you qualify for? Discover your trade tier, Prior Learning credits, and milestone path.">
   <meta property="og:image" content="https://danieltolczyk.github.io/cyber-trade-estimator/images/cyber-trade-practitioner.jpg">
   <meta property="og:url" content="https://danieltolczyk.github.io/cyber-trade-estimator/">
 
-  <link rel="stylesheet" href="styles.css?v=1.9.3">
+  <link rel="stylesheet" href="styles.css?v=2.0.0">
 </head>
 <body>
   <header class="site-header">
@@ -111,7 +111,7 @@
             </div>
 
             <div class="track-category-group">
-              <span class="track-group-label">EXPERIENCED PRACTITIONERS (DAY-1 GRANDFATHERING)</span>
+              <span class="track-group-label">EXPERIENCED PRACTITIONERS (GRANDFATHERING TRANSITION)</span>
               <div class="track-tabs triple-tabs" id="trackTabs">
                 <button type="button" class="track-tab" data-track="TRACK_A">
                   <span class="track-pill">TRACK A</span>
@@ -349,6 +349,13 @@
                     <small id="hintArtifactsA">Can provide 3 work samples (blueprints, post-mortems, CVEs) for Master Oral Board.</small>
                   </div>
                 </label>
+                <label class="verification-item disabled" id="itemOralBoardA" style="margin-top: 0.5rem;">
+                  <input type="checkbox" id="hasOralBoardA" disabled>
+                  <div class="verification-text">
+                    <strong>Master Oral Board Defense Completed</strong>
+                    <small id="hintOralBoardA">Defended architectural portfolio before 3-member Board (finalizes Master standing).</small>
+                  </div>
+                </label>
               </div>
             </div>
           </section>
@@ -455,11 +462,18 @@
             <div class="form-group" style="margin-top: 1rem;">
               <label class="group-label">Track B Master Verification:</label>
               <div class="verification-checklist">
-                <label class="verification-item disabled" id="itemOralBoardB">
+                <label class="verification-item disabled" id="itemArtifactsB">
+                  <input type="checkbox" id="hasArtifactsB" disabled>
+                  <div class="verification-text">
+                    <strong>Available: Three (3) Sanitized Defense Artifacts</strong>
+                    <small id="hintArtifactsB">Can provide 3 work samples (blueprints, post-mortems, CVEs) for Master Oral Board.</small>
+                  </div>
+                </label>
+                <label class="verification-item disabled" id="itemOralBoardB" style="margin-top: 0.5rem;">
                   <input type="checkbox" id="hasOralBoardB" disabled>
                   <div class="verification-text">
-                    <strong>Ready for Master Oral Board Defense</strong>
-                    <small id="hintOralBoardB">Holds senior runtime + benchmark credential; prepared to defend portfolio before 3-member Board.</small>
+                    <strong>Master Oral Board Defense Completed</strong>
+                    <small id="hintOralBoardB">Defended architectural portfolio before 3-member Board (finalizes Master standing).</small>
                   </div>
                 </label>
               </div>
@@ -542,6 +556,13 @@
                     <small id="hintArtifactsC">Can provide 3 work samples or published vulnerabilities for Master Oral Board submission.</small>
                   </div>
                 </label>
+                <label class="verification-item disabled" id="itemOralBoardC" style="margin-top: 0.5rem;">
+                  <input type="checkbox" id="hasOralBoardC" disabled>
+                  <div class="verification-text">
+                    <strong>Master Oral Board Defense Completed</strong>
+                    <small id="hintOralBoardC">Defended architectural portfolio before 3-member Board (finalizes Master standing).</small>
+                  </div>
+                </label>
               </div>
             </div>
 
@@ -558,6 +579,22 @@
       <div class="results-column">
         <section class="card dashboard-card">
           
+          <!-- Operational Hours Summary (Mathematical Proof) -->
+          <div class="hours-audit-box">
+            <div class="audit-row">
+              <span>Direct Operational Runtime:</span>
+              <strong id="runtimeHours">0 hrs</strong>
+            </div>
+            <div class="audit-row" id="plaAuditRow">
+              <span>Prior Learning Credit (PLA):</span>
+              <strong id="plaHours">0 hrs (Max 4,000 hrs / 50% cap)</strong>
+            </div>
+            <div class="audit-row total-audit-row">
+              <span>Total Accredited Hours:</span>
+              <strong id="totalHours">0 hrs</strong>
+            </div>
+          </div>
+
           <!-- What Your Standing Unlocks (Primary Card) -->
           <div class="authorities-section" id="authoritiesBox">
             <h4>Operational Authorities & Trade Benefits Unlocked</h4>
@@ -574,28 +611,12 @@
             </ul>
           </div>
 
-          <!-- Day 1 JATC Portfolio Submission Checklist -->
+          <!-- JATC Portfolio Submission Checklist -->
           <div class="submission-section" id="submissionBox">
-            <h4>Day 1 JATC Portfolio Checklist</h4>
+            <h4>JATC Portfolio Submission Checklist</h4>
             <ul id="submissionList" class="submission-list">
               <!-- Populated dynamically via JS -->
             </ul>
-          </div>
-
-          <!-- Operational Hours Summary -->
-          <div class="hours-audit-box">
-            <div class="audit-row">
-              <span>Direct Operational Runtime:</span>
-              <strong id="runtimeHours">0 hrs</strong>
-            </div>
-            <div class="audit-row" id="plaAuditRow">
-              <span>Prior Learning Credit (PLA):</span>
-              <strong id="plaHours">0 hrs (Max 4,000 hrs / 50% cap)</strong>
-            </div>
-            <div class="audit-row total-audit-row">
-              <span>Total Accredited Hours:</span>
-              <strong id="totalHours">0 hrs</strong>
-            </div>
           </div>
 
           <!-- Framework Specifications CTAs -->
@@ -639,6 +660,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=1.9.3"></script>
+  <script src="app.js?v=2.0.0"></script>
 </body>
 </html>
