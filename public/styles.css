@@ -1060,6 +1060,37 @@ body {
   margin-bottom: 0.35rem;
 }
 
+/* Path to Next Milestone Section */
+.advancement-section {
+  background: linear-gradient(135deg, #172554 0%, #0f172a 100%);
+  border: 1px solid #3b82f6;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.advancement-section h4 {
+  color: #93c5fd;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.advancement-list {
+  font-size: 0.82rem;
+  padding-left: 1.25rem;
+  color: #dbeafe;
+  line-height: 1.55;
+}
+
+.advancement-list li {
+  margin-bottom: 0.35rem;
+}
+
+.advancement-list li strong {
+  color: #fff;
+}
+
 /* Day 1 Submission Section */
 .submission-section {
   background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);

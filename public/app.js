@@ -523,6 +523,61 @@ function calculateStanding() {
     });
   }
 
+  // Render Dynamic Path to Next Milestone Roadmap
+  let advancementTarget = "Path to Next Milestone";
+  let advancementItems = [];
+
+  if (tierCode === "MASTER") {
+    advancementTarget = "Pinnacle Standing Achieved: Master Practitioner";
+    advancementItems.push("<strong>Grandfathering Licensure:</strong> Full Master standing awarded upon Board charter.");
+    advancementItems.push("<strong>Statutory Authority:</strong> Eligible for Designated Master of Record (MoR) appointments.");
+    advancementItems.push("<strong>Triennial CTD Maintenance:</strong> Complete 120 hours Continuing Technical Development every 3 years ($0 fee).");
+  } else if (tierCode === "JOURNEYMAN") {
+    const remHours = Math.max(0, (currentTrack === "TRACK_A" ? 16000 : 12000) - totalAccredited);
+    const remYrs = (remHours / 2000).toFixed(1);
+    advancementTarget = "Next Milestone: Master Practitioner (12k–16k hrs)";
+    if (remHours > 0) {
+      advancementItems.push(`<strong>Operational Runtime:</strong> Log ${remHours.toLocaleString()} additional verified runtime hours (~${remYrs} years).`);
+    } else {
+      advancementItems.push("<strong>Operational Runtime Met:</strong> Senior runtime thresholds satisfied.");
+    }
+    advancementItems.push("<strong>Defense Portfolio:</strong> Assemble Three (3) Sanitized Technical Defense Artifacts (blueprints, post-mortems, CVEs).");
+    advancementItems.push("<strong>Oral Board Defense:</strong> Successfully defend architectural portfolio before 3-member Master Board panel.");
+    advancementItems.push("<strong>Specialty Endorsement:</strong> Earn at least one Board Specialty Endorsement (e.g. SE-MED, SE-ICS, SE-DFIR).");
+  } else if (currentTrack === "TRACK_ENTRY" && !document.getElementById("passedPreApprenticeExamEntry").checked) {
+    advancementTarget = "Next Milestone: Registered Apprentice Tier 1 (Dispatch Ready)";
+    advancementItems.push("<strong>Practical Benchmark Exam:</strong> Pass the free proctored hands-on Pre-Apprenticeship Practical Benchmark Challenge (Linux, networking & defensive Python).");
+    advancementItems.push("<strong>Coursework Articulation:</strong> Submit bootcamp syllabus or transcripts for up to 144 hours Year 1 RTI classroom credit.");
+    advancementItems.push("<strong>Paid Dispatch Placement:</strong> Enter the JATC Dispatch Clearinghouse for direct placement with an employer sponsor ($25–$32/hr base).");
+  } else {
+    // Apprentice Tiers 1 through 4
+    const remHours = Math.max(0, 8000 - totalAccredited);
+    const remYrs = (remHours / 2000).toFixed(1);
+    advancementTarget = "Next Milestone: Licensed Journeyman (8,000 hrs)";
+    advancementItems.push(`<strong>Operational Runtime:</strong> Complete ${remHours.toLocaleString()} additional verified rotational runtime hours (~${remYrs} years).`);
+    advancementItems.push("<strong>Rotational Domains:</strong> Complete mandatory runtime distribution across 5 core defensive engineering domains.");
+    advancementItems.push("<strong>Classroom Instruction (RTI):</strong> Complete remaining 144 hr/yr Related Technical Instruction modules (100% employer-funded).");
+    if (currentTrack === "TRACK_A") {
+      advancementItems.push("<strong>Grandfathering Fast-Track:</strong> Alternatively, submit Two (2) Sworn Peer Reference Affidavits once 8,000 total hours are reached.");
+    } else if (currentTrack === "TRACK_B") {
+      advancementItems.push("<strong>Benchmark Fast-Track:</strong> Select a recognized benchmark credential (CISSP, CISM, CISA, CCSP) to unlock immediate Day-1 licensure once 8,000 hours are reached.");
+    } else {
+      advancementItems.push("<strong>Licensure Examination:</strong> Pass the proctored NCTB Hands-On Practical Challenge Examination.");
+    }
+  }
+
+  const advHeader = document.getElementById("advancementHeader");
+  const advList = document.getElementById("advancementList");
+  if (advHeader && advList) {
+    advHeader.textContent = advancementTarget;
+    advList.innerHTML = "";
+    advancementItems.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = item;
+      advList.appendChild(li);
+    });
+  }
+
   const linksGrid = document.getElementById("specLinksGrid");
   linksGrid.innerHTML = "";
   const baseUrl = "https://github.com/DanielTolczyk/the-cyber-trade-project/blob/main";

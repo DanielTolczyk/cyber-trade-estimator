@@ -20,7 +20,7 @@
   <meta property="og:image" content="https://danieltolczyk.github.io/cyber-trade-estimator/images/cyber-trade-practitioner.jpg">
   <meta property="og:url" content="https://danieltolczyk.github.io/cyber-trade-estimator/">
 
-  <link rel="stylesheet" href="styles.css?v=1.9.0">
+  <link rel="stylesheet" href="styles.css?v=1.9.1">
 </head>
 <body>
   <header class="site-header">
@@ -332,8 +332,8 @@
                 <label class="verification-item disabled" id="itemAffidavitsA">
                   <input type="checkbox" id="hasAffidavitsA" disabled>
                   <div class="verification-text">
-                    <strong>Two (2) Professional Peer Reference Affidavits</strong>
-                    <small id="hintAffidavitsA">Confirms operational execution across core defensive domains (Requires 4+ Years Runtime).</small>
+                    <strong>Available: Two (2) Peer Reference Affidavits</strong>
+                    <small id="hintAffidavitsA">Can provide two professional references confirming direct operational runtime.</small>
                   </div>
                 </label>
               </div>
@@ -345,8 +345,8 @@
                 <label class="verification-item disabled" id="itemArtifactsA">
                   <input type="checkbox" id="hasArtifactsA" disabled>
                   <div class="verification-text">
-                    <strong>Three (3) Sanitized Engineering Artifacts</strong>
-                    <small id="hintArtifactsA">Required for Master Oral Board Defense (Requires 8+ Years Runtime).</small>
+                    <strong>Available: Three (3) Sanitized Defense Artifacts</strong>
+                    <small id="hintArtifactsA">Can provide 3 work samples (blueprints, post-mortems, CVEs) for Master Oral Board.</small>
                   </div>
                 </label>
               </div>
@@ -458,8 +458,8 @@
                 <label class="verification-item disabled" id="itemOralBoardB">
                   <input type="checkbox" id="hasOralBoardB" disabled>
                   <div class="verification-text">
-                    <strong>Master Oral Board Defense Completed</strong>
-                    <small id="hintOralBoardB">Requires 6+ Years Runtime + Benchmark Cert to Enable.</small>
+                    <strong>Ready for Master Oral Board Defense</strong>
+                    <small id="hintOralBoardB">Holds senior runtime + benchmark credential; prepared to defend portfolio before 3-member Board.</small>
                   </div>
                 </label>
               </div>
@@ -505,7 +505,7 @@
                 <input type="checkbox" id="rangeExamPassed">
                 <span class="checkbox-box"></span>
                 <div class="checkbox-text">
-                  <strong>Passed 4-Hour Proctored Board Practical Range Examination</strong>
+                  <strong>Targeting / Completed: 4-Hour Proctored Practical Range Exam</strong>
                   <small>Live incident containment, firewall re-configuration, packet triage & system hardening in isolated range.</small>
                 </div>
               </label>
@@ -538,8 +538,8 @@
                 <label class="verification-item disabled" id="itemArtifactsC">
                   <input type="checkbox" id="hasArtifactsC" disabled>
                   <div class="verification-text">
-                    <strong>Three (3) Sanitized Engineering Artifacts (or Published CVEs / Research)</strong>
-                    <small id="hintArtifactsC">Requires Range Exam Passed + 8+ Years Runtime to Enable.</small>
+                    <strong>Available: Three (3) Sanitized Defense Artifacts (or CVEs / Research)</strong>
+                    <small id="hintArtifactsC">Can provide 3 work samples or published vulnerabilities for Master Oral Board submission.</small>
                   </div>
                 </label>
               </div>
@@ -562,6 +562,14 @@
           <div class="authorities-section" id="authoritiesBox">
             <h4>Operational Authorities & Trade Benefits Unlocked</h4>
             <ul id="authoritiesList" class="authorities-list">
+              <!-- Populated dynamically via JS -->
+            </ul>
+          </div>
+
+          <!-- Path to Next Milestone (Actionable Roadmap) -->
+          <div class="advancement-section" id="advancementBox">
+            <h4 id="advancementHeader">Path to Next Milestone</h4>
+            <ul id="advancementList" class="advancement-list">
               <!-- Populated dynamically via JS -->
             </ul>
           </div>
@@ -631,6 +639,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=1.9.0"></script>
+  <script src="app.js?v=1.9.1"></script>
 </body>
 </html>
