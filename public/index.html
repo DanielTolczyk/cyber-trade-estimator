@@ -26,12 +26,12 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <span class="brand-badge">COMMUNITY ESTIMATOR &bull; FRAMEWORK v1.6.1</span>
+        <span class="brand-badge">THE CYBER TRADE PROJECT &bull; v1.7.0</span>
         <h1>Cybersecurity Trade Tier & Grandfathering Estimator</h1>
         <p class="subtitle">If cybersecurity transitioned to a licensed skilled trade today, where would you place on Day 1? Calculate your grandfathering standing, Prior Learning credits, and path to the next tier.</p>
       </div>
       <div class="header-links">
-        <a href="https://danieltolczyk.github.io/the-cyber-trade-project/" target="_blank" rel="noopener" class="btn btn-outline">Explore The Cyber Trade Project on GitHub &rarr;</a>
+        <a href="https://danieltolczyk.github.io/the-cyber-trade-project/" target="_blank" rel="noopener" class="btn btn-outline">Explore Framework Website &rarr;</a>
       </div>
     </div>
   </header>
@@ -58,6 +58,32 @@
 
   <!-- Main Calculator Grid -->
   <main class="container main-content">
+    
+    <!-- Overview & How It Works Guide Card -->
+    <section class="estimator-guide-card">
+      <div class="estimator-guide-header">
+        <div class="estimator-guide-title">
+          <span>How the Trade Placement Engine Works</span>
+        </div>
+      </div>
+      <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
+        This tool estimates where your existing career experience, military background, degrees, and certifications place you under the National Cybersecurity Trade Board standards. Hover over any highlighted term (like <span class="glossary-term" data-term="PLA">PLA</span>, <span class="glossary-term" data-term="RTI">RTI</span>, <span class="glossary-term" data-term="AMF">AMF</span>, or <span class="glossary-term" data-term="MoR">MoR</span>) for instant definitions.
+      </p>
+      <div class="estimator-guide-grid">
+        <div class="guide-step-box">
+          <h4>1. Select Your Pathway</h4>
+          <p>Choose between <strong>Experienced Grandfathering</strong> (Track A, B, or C) or <strong>Student & Entry On-Ramps</strong>.</p>
+        </div>
+        <div class="guide-step-box">
+          <h4>2. Calculate Runtime & PLA</h4>
+          <p>Enter your hands-on <strong>Career Runtime</strong> and prior certifications to calculate your accredited hours.</p>
+        </div>
+        <div class="guide-step-box">
+          <h4>3. Discover Standing & Floor</h4>
+          <p>See your unlocked licensure tier, wage floor percentage of <span class="glossary-term" data-term="RJPB">RJPB</span>, and next milestone.</p>
+        </div>
+      </div>
+    </section>
     
     <!-- Full-Width Dynamic Milestone Celebration Banner & Stepper -->
     <section class="milestone-banner" id="milestoneBanner">
@@ -483,33 +509,13 @@
 
         <!-- Track C Form Panel: Practical Range Challenge -->
         <div id="panelTrackC" class="track-panel">
-          <!-- Step 2: Track C Operational Runtime -->
+          <!-- Step 2: Track C Practical Challenge Exam (Primary Pathway) -->
           <section class="card section-card">
             <div class="card-title">
               <span class="step-num">2</span>
               <div>
-                <h3>Track C: Career Runtime & Experience</h3>
-                <p class="card-desc">Optional career runtime for senior candidates seeking immediate Master Oral Board defense.</p>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="field-header">
-                <label for="cyberYearsC">Historical Career Defense Runtime:</label>
-                <span class="field-badge" id="cyberYearsValC">0 Months (0 hrs)</span>
-              </div>
-              <input type="range" id="cyberYearsC" min="0" max="8" step="0.5" value="0.0" class="slider">
-              <small class="field-hint">Senior practitioners with 8+ years runtime who pass Track C can immediately defend their Master Portfolio during the grandfathering window.</small>
-            </div>
-          </section>
-
-          <!-- Step 3: Track C Examination & Master Verification -->
-          <section class="card section-card">
-            <div class="card-title">
-              <span class="step-num">3</span>
-              <div>
-                <h3>Practical Range Exam & Master Verification</h3>
-                <p class="card-desc">Proctored hands-on cyber range validation for instant Day-1 Journeyman Licensure.</p>
+                <h3>Track C: Practical Range Challenge Exam</h3>
+                <p class="card-desc">Proctored hands-on cyber range validation for instant Day-1 Journeyman Licensure (zero paper trails or certs required).</p>
               </div>
             </div>
 
@@ -520,10 +526,35 @@
                 <span class="checkbox-box"></span>
                 <div class="checkbox-text">
                   <strong>Targeting / Completed: 4-Hour Proctored Practical Range Exam</strong>
-                  <small>Live incident containment, firewall re-configuration, packet triage & system hardening in isolated range.</small>
+                  <small>Live incident containment, firewall re-configuration, packet triage & system hardening in an isolated cyber range.</small>
                 </div>
               </label>
               <div class="range-badge-result">Awards Immediate Day-1 Journeyman Licensure (8,000 hr Legal Baseline)</div>
+            </div>
+
+            <div class="range-info-box" style="margin-top: 1.25rem;">
+              <h4>About the Practical Range Challenge:</h4>
+              <p>Track C is designed for non-traditional talent, CTF competitors, independent security researchers, and self-taught engineers. Passing the 4-hour proctored range challenge confers immediate <strong>Licensed Journeyman</strong> standing (100% RJPB wage floor) with zero historical employment verification required.</p>
+            </div>
+          </section>
+
+          <!-- Step 3: Optional Career Runtime & Master Elevation -->
+          <section class="card section-card">
+            <div class="card-title">
+              <span class="step-num">3</span>
+              <div>
+                <h3>Prior Career Runtime & Master Elevation (Optional)</h3>
+                <p class="card-desc">For practitioners with historical runtime and research artifacts seeking Master Practitioner standing.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="field-header">
+                <label for="cyberYearsC">Historical Career Defense Runtime (Optional):</label>
+                <span class="field-badge" id="cyberYearsValC">0 Months (0 hrs)</span>
+              </div>
+              <input type="range" id="cyberYearsC" min="0" max="8" step="0.5" value="0.0" class="slider">
+              <small class="field-hint">Range Challenge winners with 8+ years verified defense runtime can immediately submit 3 engineering artifacts for Master Oral Board defense.</small>
             </div>
 
             <div class="form-group" style="margin-top: 1.25rem;">
@@ -564,11 +595,6 @@
                   </div>
                 </label>
               </div>
-            </div>
-
-            <div class="range-info-box">
-              <h4>About Track C & Master Elevation:</h4>
-              <p>Passing Track C immediately establishes the <strong>8,000-hour Journeyman baseline</strong> with 100% RJPB wage floor standing. Senior practitioners with 8+ years can immediately submit 3 artifacts (published CVEs and technical research count!) for Master Oral Board defense.</p>
             </div>
           </section>
         </div>
@@ -628,7 +654,7 @@
 
           <!-- Framework Specifications CTAs -->
           <div class="specs-nav-section" id="specsNavBox">
-            <h4>Explore Full Standards on GitHub</h4>
+            <h4>Explore Full Standards on Framework Website</h4>
             <div class="spec-links-list" id="specLinksGrid">
               <!-- Populated dynamically via JS -->
             </div>

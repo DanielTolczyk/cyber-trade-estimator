@@ -977,6 +977,163 @@ function init() {
   calculateStanding();
 }
 
+
+// Interactive Hover Tooltip Engine for Estimator
+const ESTIMATOR_GLOSSARY = {
+  "Taft-Hartley": {
+    title: "Taft-Hartley Act (LMRA § 302(c))",
+    category: "Labor Statute",
+    def: "Federal labor statute permitting jointly trusteed multi-employer training funds co-governed by equal labor and employer trustees to fund $0 tuition apprenticeships.",
+    citation: "29 U.S.C. § 186(c)"
+  },
+  "ERISA": {
+    title: "ERISA (§ 403 Fiduciary Shield)",
+    category: "Federal Law",
+    def: "Employee Retirement Income Security Act. Insulates worker health hour-banks and pension funds from corporate bankruptcy, creditors, and lawsuits.",
+    citation: "29 U.S.C. § 1103"
+  },
+  "JATC": {
+    title: "Joint Apprenticeship & Training Committee",
+    category: "Skilled Trade",
+    def: "Bipartisan training trust body that funds community college labs, pays instructors, and certifies apprentice logbook milestones.",
+    citation: "Pillar VI / 29 CFR Part 29"
+  },
+  "DOL": {
+    title: "U.S. Department of Labor (29 CFR 29)",
+    category: "Regulatory Body",
+    def: "Federal agency governing Registered Apprenticeships, unlocking WIOA workforce grants and tax credits immediately on Day 1.",
+    citation: "National Apprenticeship Act"
+  },
+  "Master of Record": {
+    title: "Master of Record (MoR)",
+    category: "Licensure Tier",
+    def: "A licensed Master Practitioner holding statutory sign-off authority for enterprise security baselines and standing to file formal Notices of Safety Non-Concurrence.",
+    citation: "Pillar IV & Pillar V"
+  },
+  "MoR": {
+    title: "Master of Record (MoR)",
+    category: "Licensure Tier",
+    def: "A licensed Master Practitioner holding statutory sign-off authority for enterprise security baselines and standing to file formal Notices of Safety Non-Concurrence.",
+    citation: "Pillar IV & Pillar V"
+  },
+  "Journeyman": {
+    title: "Licensed Journeyman",
+    category: "Licensure Tier",
+    def: "A licensed practitioner who has completed 8,000 verified operational logbook hours, passed the practical challenge examination, and holds autonomous practice rights.",
+    citation: "Pillar IV / 100% RJPB"
+  },
+  "RJPB": {
+    title: "Regional Journeyman Prevailing Baseline",
+    category: "Labor Economics",
+    def: "The local prevailing hourly wage baseline for Journeymen, upon which apprentice wage steps (50% Tier 1 to 80% Tier 4) are strictly indexed.",
+    citation: "Wage Scales Standard"
+  },
+  "PLA": {
+    title: "Prior Learning Assessment (PLA)",
+    category: "Grandfathering",
+    def: "Standardized evaluation granting runtime hours and RTI credits for documented career experience, military cyber MOS, and accredited coursework (up to 50% cap).",
+    citation: "Pillar I & Transition Plan"
+  },
+  "RTI": {
+    title: "Related Technical Instruction (RTI)",
+    category: "Workforce Training",
+    def: "Mandatory, paid 20% classroom, lab, and simulation instruction (minimum 144 hours/year) completed alongside on-the-job training.",
+    citation: "Pillar II & 29 CFR Part 29"
+  },
+  "AMF": {
+    title: "Annual Maintenance Fee (AMF)",
+    category: "Credentialism",
+    def: "Recurring commercial certification vendor subscription fees, strictly prohibited from trade licensure renewals ($0 renewal via runtime).",
+    citation: "Pillar IV / Anti-Credentialism"
+  },
+  "Career Runtime": {
+    title: "Career Runtime Hours",
+    category: "Trade Telemetry",
+    def: "Total verified hands-on operational hours logged in active defensive, administrative, engineering, or incident triage roles.",
+    citation: "Pillar III & Logbook Standards"
+  },
+  "W-2": {
+    title: "W-2 Direct Employment",
+    category: "Labor Classification",
+    def: "Direct salaried or hourly employment with statutory worker protections, mandatory overtime rules, and employer tax withholding, distinct from 1099 gigs.",
+    citation: "Pillar II"
+  }
+};
+
+let estTooltipEl = null;
+let estHideTimeout = null;
+
+function initEstimatorTooltips() {
+  estTooltipEl = document.createElement("div");
+  estTooltipEl.className = "glossary-tooltip-card";
+  estTooltipEl.innerHTML = `
+    <div class="tooltip-header">
+      <span class="tooltip-title" id="est-tt-title"></span>
+      <span class="tooltip-category" id="est-tt-cat"></span>
+    </div>
+    <div class="tooltip-body" id="est-tt-body"></div>
+    <div class="tooltip-citation" id="est-tt-cite"></div>
+  `;
+  document.body.appendChild(estTooltipEl);
+
+  estTooltipEl.addEventListener("mouseenter", () => clearTimeout(estHideTimeout));
+  estTooltipEl.addEventListener("mouseleave", hideEstTooltip);
+
+  const termElements = document.querySelectorAll(".glossary-term");
+  termElements.forEach(el => {
+    const termKey = el.getAttribute("data-term") || el.textContent.trim();
+    el.addEventListener("mouseenter", (e) => showEstTooltip(e.target, termKey));
+    el.addEventListener("mouseleave", hideEstTooltip);
+    el.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showEstTooltip(e.target, termKey);
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".glossary-term") && !e.target.closest(".glossary-tooltip-card")) {
+      hideEstTooltip();
+    }
+  });
+}
+
+function showEstTooltip(targetEl, termKey) {
+  const data = ESTIMATOR_GLOSSARY[termKey];
+  if (!data || !estTooltipEl) return;
+  clearTimeout(estHideTimeout);
+
+  document.getElementById("est-tt-title").textContent = data.title;
+  document.getElementById("est-tt-cat").textContent = data.category;
+  document.getElementById("est-tt-body").textContent = data.def;
+  document.getElementById("est-tt-cite").textContent = data.citation;
+
+  const rect = targetEl.getBoundingClientRect();
+  const tooltipWidth = 300;
+  let left = rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2);
+  let top = rect.bottom + window.scrollY + 8;
+
+  if (left < 16) left = 16;
+  if (left + tooltipWidth > window.innerWidth - 16) {
+    left = window.innerWidth - tooltipWidth - 16;
+  }
+
+  estTooltipEl.style.left = `${left}px`;
+  estTooltipEl.style.top = `${top}px`;
+  estTooltipEl.classList.add("active");
+}
+
+function hideEstTooltip() {
+  estHideTimeout = setTimeout(() => {
+    if (estTooltipEl) estTooltipEl.classList.remove("active");
+  }, 120);
+}
+
+function init() {
+  initChips();
+  calculateStanding();
+  initEstimatorTooltips();
+}
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {

@@ -1,16 +1,20 @@
 /* Cybersecurity Trade Project - Estimator Modern Stylesheet */
 :root {
-  --bg-color: #0b0f19;
-  --card-bg: #111827;
+  --bg-color: #0a0e17;
+  --bg-surface: #0f172a;
+  --card-bg: #161f30;
   --card-border: #1f2937;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
+  --border-subtle: #2e3a52;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
   --accent-blue: #2563eb;
   --accent-blue-hover: #3b82f6;
-  --accent-cyan: #06b6d4;
+  --accent-cyan: #0ea5e9;
   --accent-green: #10b981;
   --accent-amber: #f59e0b;
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 * {
@@ -1399,3 +1403,145 @@ body {
     width: 100%;
   }
 }
+
+
+/* Interactive Hover Glossary Tooltips */
+.glossary-term {
+  border-bottom: 1px dotted var(--accent-cyan);
+  cursor: help;
+  color: var(--text-main);
+  font-weight: 500;
+  transition: color 0.15s ease;
+  position: relative;
+}
+
+.glossary-term:hover {
+  color: var(--accent-cyan);
+  background-color: rgba(14, 165, 233, 0.12);
+  border-radius: 2px;
+}
+
+.glossary-tooltip-card {
+  position: absolute;
+  z-index: 2000;
+  background-color: #0f172a;
+  border: 1px solid #38bdf8;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.75), 0 8px 10px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  width: 300px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #e2e8f0;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.glossary-tooltip-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.35rem;
+}
+
+.tooltip-title {
+  font-weight: 700;
+  color: #38bdf8;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.tooltip-category {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  background-color: #1e293b;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.tooltip-body {
+  margin-bottom: 0.4rem;
+  color: #cbd5e1;
+}
+
+.tooltip-citation {
+  font-size: 0.72rem;
+  color: var(--accent-green);
+  border-top: 1px solid #1e293b;
+  padding-top: 0.3rem;
+  font-family: var(--font-mono);
+}
+
+/* Overview / How It Works Card */
+.estimator-guide-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--accent-blue);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.estimator-guide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.estimator-guide-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.estimator-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 800px) {
+  .estimator-guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.guide-step-box {
+  background: #0d1322;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.guide-step-box h4 {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.guide-step-box p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
