@@ -649,7 +649,7 @@ function calculateStanding() {
 
   const linksGrid = document.getElementById("specLinksGrid");
   linksGrid.innerHTML = "";
-  const baseUrl = "https://github.com/the-cyber-trade-project/the-cyber-trade-project/blob/main";
+  const baseUrl = "https://github.com/the-cyber-trade-project/framework/blob/main";
   const specLinks = [];
 
   specLinks.push({
@@ -845,7 +845,7 @@ document.getElementById("btnCopySummary").addEventListener("click", () => {
                      "Entry Pipeline (Students & Stranded Learners)";
 
   const appUrl = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-    ? "https://the-cyber-trade-project.github.io/cyber-trade-estimator/"
+    ? "https://the-cyber-trade-project.github.io/estimator/"
     : window.location.href.split("#")[0];
 
   const plainText = [

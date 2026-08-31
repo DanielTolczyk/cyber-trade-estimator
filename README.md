@@ -1,9 +1,9 @@
 # Cybersecurity Trade Tier & Grandfathering Estimator
 
-A privacy-first, client-side web application and mathematical evaluation engine enabling cybersecurity practitioners, students, and career transitioners to estimate their provisional trade placement, Prior Learning Assessment (PLA) credits, and career milestone trajectory under **[The Cybersecurity Trade Project](https://the-cyber-trade-project.github.io/the-cyber-trade-project/)** specifications (v1.6.1).
+A privacy-first, client-side web application and mathematical evaluation engine enabling cybersecurity practitioners, students, and career transitioners to estimate their provisional trade placement, Prior Learning Assessment (PLA) credits, and career milestone trajectory under **[The Cybersecurity Trade Project](https://the-cyber-trade-project.github.io/framework/)** specifications (v1.6.1).
 
-* **Live Interactive Web Application:** [https://the-cyber-trade-project.github.io/cyber-trade-estimator/](https://the-cyber-trade-project.github.io/cyber-trade-estimator/)
-* **Specifications Repository:** [The Cybersecurity Trade Project](https://github.com/the-cyber-trade-project/the-cyber-trade-project)
+* **Live Interactive Web Application:** [https://the-cyber-trade-project.github.io/estimator/](https://the-cyber-trade-project.github.io/estimator/)
+* **Specifications Repository:** [The Cybersecurity Trade Project](https://github.com/the-cyber-trade-project/framework)
 
 ---
 
@@ -53,7 +53,7 @@ The estimator models the 10-Year Industry Transition Roadmap and National Appren
 ## Project Structure
 
 ```
-cyber-trade-estimator/
+estimator/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # Automated GitHub Pages CI/CD workflow

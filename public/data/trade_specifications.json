@@ -1,6 +1,6 @@
 {
   "version": "1.6.1",
-  "source_repository": "https://github.com/the-cyber-trade-project/the-cyber-trade-project",
+  "source_repository": "https://github.com/the-cyber-trade-project/framework",
   "residency_floor_percentage": 50,
   "max_pla_hours": 4000,
   "annual_runtime_hours": 2000,
