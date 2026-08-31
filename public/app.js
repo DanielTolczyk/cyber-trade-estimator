@@ -1057,6 +1057,48 @@ const ESTIMATOR_GLOSSARY = {
     category: "Labor Classification",
     def: "Direct salaried or hourly employment with statutory worker protections, mandatory overtime rules, and employer tax withholding, distinct from 1099 gigs.",
     citation: "Pillar II"
+  },
+  "CCDR": {
+    title: "Cyber Civil Defense Reserve (CCDR)",
+    category: "Workforce Buffer",
+    def: "A counter-cyclical public workforce mechanism deploying unabsorbed apprentices during economic downturns to protect municipal infrastructure and schools funded by public grants.",
+    citation: "Governance / Guild Charter"
+  },
+  "FOIA": {
+    title: "Final-Offer Interest Arbitration (FOIA)",
+    category: "Labor Dispute",
+    def: "Compulsory, binding tripartite arbitration resolving contract deadlocks at Tier-I Critical Infrastructure facilities within 14 days, with zero strike risk or defensive standdowns.",
+    citation: "Governance / Guild Charter"
+  },
+  "FORM-005": {
+    title: "Targeted OSS Exemption (FORM-005)",
+    category: "Procedural Form",
+    def: "Standardized instrument executed by a Master of Record certifying an internal security fork and active compensating controls for an unpatched open-source dependency (90-day grace period).",
+    citation: "Templates / FORM-005"
+  },
+  "OOB-HMS": {
+    title: "Out-of-Band Hardware Enclave Multi-Sig",
+    category: "Supply Chain",
+    def: "Threshold multi-signature release gate for Tier-I infrastructure held across isolated hardware security keys operated by Master and Journeyman engineers, decoupled from public CAs.",
+    citation: "Velocity, Cloud & Safe Harbor"
+  },
+  "Statutory Malpractice Liability Cap": {
+    title: "Statutory Malpractice Liability Cap",
+    category: "Liability Shield",
+    def: "$0 personal civil damages liability cap for non-negligent Masters of Record and Journeymen maintaining verified baseline compliance and clean attestation feeds.",
+    citation: "Pillar V & Technical Refusal"
+  },
+  "Strict Blast-Radius Localization Rule": {
+    title: "Strict Blast-Radius Localization Rule",
+    category: "Cloud Governance",
+    def: "Cloud force majeure rule limiting toll-free compliance suspensions strictly to documented CSP sub-regions/services (72-hr max), preventing fraudulent tenant-parking abuse.",
+    citation: "Velocity, Cloud & Safe Harbor"
+  },
+  "72-Hour Internal Remediation Rule": {
+    title: "72-Hour Internal Remediation Rule",
+    category: "Ethics & Whistleblower",
+    def: "Mandatory corporate cure period requiring a Form FORM-003 filing before external whistleblower bounties attach, preventing malicious compliance traps.",
+    citation: "Code of Ethics & Conduct"
   }
 };
 
