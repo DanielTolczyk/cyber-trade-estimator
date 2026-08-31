@@ -688,7 +688,7 @@ function calculateStanding() {
     const a = document.createElement("a");
     a.href = item.url;
     a.target = "_blank";
-    a.rel = "noopener";
+    a.rel = "noopener noreferrer";
     a.className = "spec-link-item";
     a.innerHTML = `
       <span>${item.title}</span>
