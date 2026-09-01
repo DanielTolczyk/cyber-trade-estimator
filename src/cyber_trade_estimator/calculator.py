@@ -1,7 +1,7 @@
 """The Cybersecurity Trade Project - Grandfathering & Prior Learning Assessment (PLA) Estimator Engine.
 
 Evaluates practitioner credentials, operational runtime hours, military cyber MOS/AFSC credits,
-and specialty domain experience against published trade specifications (v1.5.1).
+and specialty domain experience against published trade specifications (v1.6.1).
 """
 
 import json

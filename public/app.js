@@ -445,7 +445,7 @@ function calculateStanding() {
       standingTitle = plaHours >= 2000 ? "Progressing Registered Apprentice (Tier 2 - Articulated)" : "Registered Apprentice Tier 1 (JATC Dispatch Ready)";
       badgeText = "STUDENT INTAKE • JATC DISPATCH READY";
       progressPct = plaHours >= 2000 ? 20 : 10;
-      nextMilestoneText = "Benchmark Practical Filter Passed: Direct placement on the JATC paid W-2 employer dispatch roster ($25–$32/hr base). 100% employer-paid Related Technical Instruction (RTI) rotations.";
+      nextMilestoneText = "Benchmark Practical Filter Passed: Direct placement on the JATC paid W-2 employer dispatch roster ($25 to $32/hr base). 100% employer-paid Related Technical Instruction (RTI) rotations.";
 
       if (hasBootcampGrad) submissionChecklist.push("Bootcamp Certificate & Coursework Syllabus (144 hr RTI Articulation Waiver)");
       if (hasMidProgram) submissionChecklist.push("Current Program Enrollment Verification (Challenge-Out Intake)");
@@ -458,7 +458,7 @@ function calculateStanding() {
       progressPct = plaHours >= 2000 ? 15 : (plaHours > 0 ? 8 : 2);
 
       if (hasBootcampGrad || hasMidProgram || hasBach || plaHours > 0) {
-        nextMilestoneText = "Coursework Articulation & PLA Logged: You have coursework and PLA credits accredited. Pass the free proctored Pre-Apprenticeship Practical Benchmark Challenge below to unlock Tier 1 Paid Apprentice Dispatch ($25–$32/hr base).";
+        nextMilestoneText = "Coursework Articulation & PLA Logged: You have coursework and PLA credits accredited. Pass the free proctored Pre-Apprenticeship Practical Benchmark Challenge below to unlock Tier 1 Paid Apprentice Dispatch ($25 to $32/hr base).";
       } else {
         nextMilestoneText = "Entry Candidate: Take the free Pre-Apprenticeship Practical Benchmark Challenge to demonstrate foundational aptitude and enter the paid earn-while-you-learn apprenticeship.";
       }
@@ -496,7 +496,7 @@ function calculateStanding() {
   if (currentTrack === "TRACK_ENTRY") {
     const passedBenchmark = document.getElementById("passedPreApprenticeExamEntry").checked;
     if (passedBenchmark) {
-      authorities.push("<strong>[JATC Priority Dispatch]</strong> Direct Placement on Paid W-2 Employer Dispatch Roster ($25–$32/hr Base)");
+      authorities.push("<strong>[JATC Priority Dispatch]</strong> Direct Placement on Paid W-2 Employer Dispatch Roster ($25 to $32/hr Base)");
       authorities.push("<strong>[RTI Articulation Credit]</strong> 144 Hours Year 1 Classroom Mandate Waived from Completed Coursework");
       authorities.push("<strong>[Debt Cessation Standing]</strong> Fee-Free Challenge-Out Intake to Halt Tuition / ISA Accrual");
       authorities.push("<strong>[Supervised Production]</strong> Mandatory 2:1 Line-of-Sight Journeyman Mentorship Ratio");
@@ -604,7 +604,7 @@ function calculateStanding() {
   } else if (tierCode === "JOURNEYMAN") {
     const remHours = Math.max(0, (currentTrack === "TRACK_A" ? 16000 : 12000) - totalAccredited);
     const remYrs = (remHours / 2000).toFixed(1);
-    advancementTarget = "Next Milestone: Master Practitioner (12k–16k hrs)";
+    advancementTarget = "Next Milestone: Master Practitioner (12k to 16k hrs)";
     if (remHours > 0) {
       advancementItems.push(`<strong>Operational Runtime:</strong> Log ${remHours.toLocaleString()} additional verified runtime hours (~${remYrs} years).`);
     } else {
@@ -617,7 +617,7 @@ function calculateStanding() {
     advancementTarget = "Next Milestone: Registered Apprentice Tier 1 (Dispatch Ready)";
     advancementItems.push("<strong>Practical Benchmark Exam:</strong> Pass the free proctored hands-on Pre-Apprenticeship Practical Benchmark Challenge (Linux, networking & defensive Python).");
     advancementItems.push("<strong>Coursework Articulation:</strong> Submit bootcamp syllabus or transcripts for up to 144 hours Year 1 RTI classroom credit.");
-    advancementItems.push("<strong>Paid Dispatch Placement:</strong> Enter the JATC Dispatch Clearinghouse for direct placement with an employer sponsor ($25–$32/hr base).");
+    advancementItems.push("<strong>Paid Dispatch Placement:</strong> Enter the JATC Dispatch Clearinghouse for direct placement with an employer sponsor ($25 to $32/hr base).");
   } else {
     // Apprentice Tiers 1 through 4
     const remHours = Math.max(0, 8000 - totalAccredited);
