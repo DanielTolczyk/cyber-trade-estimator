@@ -320,6 +320,9 @@ def calculate_trade_standing(profile: PractitionerProfile) -> TradeStandingResul
             if is_journeyman and spec["statutory_authority"]:
                 statutory_authorities.append(f"[{code}] {spec['statutory_authority']}")
 
+    if is_journeyman and not is_master_eligible:
+        statutory_authorities.append("[NCTB-MASTER-REQ] 500 Verified Instructional / Mentorship Runtime Hours Required for Master Elevation")
+
     # Calculate Specialty Wage Stacking
     combined_wage_adder_min = 0.0
     combined_wage_adder_max = 0.0
