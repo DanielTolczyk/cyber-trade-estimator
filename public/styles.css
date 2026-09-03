@@ -4,6 +4,7 @@
   --bg-surface: #0f172a;
   --card-bg: #161f30;
   --card-border: #1f2937;
+  --border-color: #1f2937;
   --border-subtle: #2e3a52;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -55,8 +56,8 @@ body {
 
 /* Portal Header & Ecosystem Navigation */
 .portal-header {
-  background-color: var(--card-bg);
-  border-bottom: 1px solid var(--card-border);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -105,7 +106,7 @@ body {
   justify-content: center;
   gap: 0.4rem;
   background-color: #1e293b;
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-color);
   color: var(--text-muted);
   text-decoration: none;
   font-family: var(--font-family);
