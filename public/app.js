@@ -455,7 +455,7 @@ function calculateStanding() {
       tierCode = "TIER_1";
       standingTitle = "Apprentice Candidate (Benchmark Practical Pending)";
       badgeText = "ENTRY • BENCHMARK CHALLENGE PENDING";
-      progressPct = plaHours >= 2000 ? 15 : (plaHours > 0 ? 8 : 2);
+      progressPct = plaHours >= 2000 ? 15 : (plaHours > 0 ? 8 : 0);
 
       if (hasBootcampGrad || hasMidProgram || hasBach || plaHours > 0) {
         nextMilestoneText = "Coursework Articulation & PLA Logged: You have coursework and PLA credits accredited. Pass the free proctored Pre-Apprenticeship Practical Benchmark Challenge below to unlock Tier 1 Paid Apprentice Dispatch ($25 to $32/hr base).";
