@@ -503,7 +503,7 @@ function calculateStanding() {
       authorities.push("<strong>[Zero Student Debt]</strong> 100% Employer-Paid Rotational Training with Zero Added Student Debt");
       authorities.push("<strong>[Guild Defense Shield]</strong> Zero-Cost Community College Remediation & Anti-TRAP Legal Protection");
     } else {
-      authorities.push("<strong>[RTI Articulation Standing]</strong> Completed Coursework Eligible for 144 Hours Classroom Bypass");
+      authorities.push("<strong>[RTI Coursework Credit]</strong> Completed Coursework Eligible for 144 Hours Classroom Waiver");
       authorities.push("<strong>[Free Benchmark Testing]</strong> 100% Fee-Free JATC Practical Benchmark Challenge ($0 Exam Fee)");
       authorities.push("<strong>[Tuition Debt Release]</strong> Challenge-Out Pathway to Halt Ongoing Tuition & ISA Debt Accrual");
       authorities.push("<strong>[Free Remediation]</strong> Access to Free Modular Public Community College Labs for Skills Gaps");
